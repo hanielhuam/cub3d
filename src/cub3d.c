@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 21:09:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/09 21:15:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/10 20:44:29 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	ft_printf("Vamos começar essa bagaça\n");
+	if (argc != 2)
+
 	return (0);
 }
