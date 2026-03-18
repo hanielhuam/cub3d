@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2024/12/17 13:30:43 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/17 20:41:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,6 @@ t_list	*to_t_list(char **matrix, int first)
 	return (list);
 }
 
-int	translate(t_list *list, va_list args)
-{
-	t_print	*print;
-	char	type;
-
-	while (list)
-	{
-		print = list->content;
-		if (print->comand)
-		{
-			type = print->comand->type;
-			if (type == 'c' || type == '%' || type == 's')
-				print->replaciment = translate_characters(print, args, type);
-			if (type == 'd' || type == 'i')
-				print->replaciment = translate_digits(print, args);
-			if (type == 'u' || type == 'x' || type == 'X' || type == 'p')
-				print->replaciment = translate_udigits(print, args, type);
-		}
-		else
-			print->replaciment = translate_no(print);
-		if (!print->replaciment)
-			return (-1);
-		list = list->next;
-	}
-	return (0);
-}
 
 int	show(t_list *list)
 {
