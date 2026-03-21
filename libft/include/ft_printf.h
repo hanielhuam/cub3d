@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 20:24:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/04/21 17:36:00 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/20 20:16:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ typedef struct s_comand
 }			t_comand;
 
 int		ft_printf(const char *format, ...);
+t_list  *to_t_list(char **matrix, int first);
 t_print	*create_print(char *str);
+int		translate(t_list *list, va_list args);
 char	*translate_characters(t_print *print, va_list args, char type);
 char	*translate_digits(t_print *print, va_list args);
 char	*translate_udigits(t_print *print, va_list args, char type);

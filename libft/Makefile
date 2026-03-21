@@ -35,6 +35,8 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/ft_printf/ft_printf.c ${SRC_DIR}/ft_printf/ft_transl_chars.c \
 	${SRC_DIR}/ft_printf/ft_transl_digits.c \
 	${SRC_DIR}/ft_printf/ft_transl_no.c \
+	${SRC_DIR}/ft_printf/ft_treat_args.c \
+	${SRC_DIR}/ft_printf/ft_translation.c \
 	${SRC_DIR}/ft_printf/ft_transl_udigits.c ${SRC_DIR}/ft_printf/t_print.c \
 	${SRC_DIR}/GNL/get_next_line.c ${SRC_DIR}/GNL/get_next_line_utils.c \
 	${SRC_DIR}/GNL/get_next_delimiter.c ${SRC_DIR}/dlist/ft_dlstadd_back.c \

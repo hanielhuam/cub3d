@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:59:57 by hmacedo-          #+#    #+#             */
-/*   Updated: 2024/11/08 21:20:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:52:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ char	**ft_split(char const *s, char c)
 		while (i)
 			free(matrix[i--]);
 		free(matrix[0]);
-		matrix[0] = NULL;
+		free(matrix);
+		matrix = NULL;
 	}
 	return (matrix);
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:40:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2024/12/16 15:46:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/20 20:14:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,34 @@ t_print	*create_print(char *str)
 	if (!print->comand)
 		return (NULL);
 	return (print);
+}
+
+t_list	*to_t_list(char **matrix, int first)
+{
+	t_list	*list;
+	t_print	*print;
+
+	list = NULL;
+	if (!first)
+	{
+		print = (t_print *)malloc(sizeof(t_print));
+		if (!print)
+			return (NULL);
+		print->original = ft_strdup(*matrix++);
+		print->comand = NULL;
+		ft_lstadd_back(&list, ft_lstnew(print));
+	}
+	while (*matrix)
+	{
+		print = create_print(*matrix++);
+		if (!print)
+		{
+			ft_lstclear(&list, del_print);
+			return (NULL);
+		}
+		ft_lstadd_back(&list, ft_lstnew(print));
+	}
+	return (list);
 }
 
 void	del_print(void *p)

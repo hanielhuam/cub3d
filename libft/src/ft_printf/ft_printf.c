@@ -6,42 +6,13 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/17 20:41:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/20 21:30:15 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_list	*to_t_list(char **matrix, int first)
-{
-	t_list	*list;
-	t_print	*print;
-
-	list = NULL;
-	if (!first)
-	{
-		print = (t_print *)malloc(sizeof(t_print));
-		if (!print)
-			return (NULL);
-		print->original = ft_strdup(*matrix++);
-		print->comand = NULL;
-		ft_lstadd_back(&list, ft_lstnew(print));
-	}
-	while (*matrix)
-	{
-		print = create_print(*matrix++);
-		if (!print)
-		{
-			ft_lstclear(&list, del_print);
-			return (NULL);
-		}
-		ft_lstadd_back(&list, ft_lstnew(print));
-	}
-	return (list);
-}
-
-
-int	show(t_list *list)
+static int	show(t_list *list)
 {
 	t_print	*print;
 	int		count;
@@ -56,7 +27,7 @@ int	show(t_list *list)
 	return (count);
 }
 
-int	translation(char **matrix, t_list *list, va_list args)
+static int	translation(char **matrix, t_list *list, va_list args)
 {
 	int		count;
 	char	**matrix_temp;
@@ -75,13 +46,17 @@ int	translation(char **matrix, t_list *list, va_list args)
 	return (count);
 }
 
+int ft_dprintf(int fd, const char *format, ...)
+{
+	
+}
+
 int	ft_printf(const char *format, ...)
 {
-	char	first;
-	char	**matrix;
 	t_list	*list_print;
 	va_list	args;
 
+	list_print = 
 	if (!format)
 		return (-1);
 	first = 0;

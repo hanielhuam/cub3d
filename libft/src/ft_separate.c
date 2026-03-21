@@ -113,7 +113,8 @@ char	**ft_separate(char const *s, char c)
 		while (i)
 			free(matrix[i--]);
 		free(matrix[0]);
-		matrix[0] = NULL;
+		free(matrix);
+		matrix = NULL;
 	}
 	return (matrix);
 }
