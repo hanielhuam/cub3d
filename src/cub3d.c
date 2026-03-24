@@ -14,9 +14,13 @@
 
 int	main(int argc, char **argv)
 {
+	int fd;
+
 	(void)argc;
 	(void)argv;
+	fd = open("test", O_RDWR);
 	ft_printf("testando o %s\n", argv[0]);
-	ft_printf("vou gravar o nome da %s em outro arquivo\n", argv[0]);
+	ft_dprintf(fd, "vou gravar o nome da %s em outro arquivo\n", argv[0]);
+	close(fd);
 	return (0);
 }

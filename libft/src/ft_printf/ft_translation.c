@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 20:39:39 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/17 21:18:08 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/24 19:36:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,16 @@ int	translate(t_list *list, va_list args)
 		list = list->next;
 	}
 	return (0);
+}
+
+char	*ft_strformat(const char *format, ...)
+{
+	t_list	*list;
+	va_list args;
+
+	list = treat_args(format);
+	if (!list)
+		return (NULL);
+	va_start(args, format);
+
 }
