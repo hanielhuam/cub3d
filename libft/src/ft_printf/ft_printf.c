@@ -6,13 +6,13 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/20 21:30:15 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/23 21:26:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	show(t_list *list)
+static int	show(t_list *list, int fd)
 {
 	t_print	*print;
 	int		count;
@@ -21,34 +21,36 @@ static int	show(t_list *list)
 	while (list)
 	{
 		print = list->content;
-		count += write(1, print->replaciment, print->size);
+		count += write(fd, print->replaciment, print->size);
 		list = list->next;
 	}
 	return (count);
 }
 
-static int	translation(char **matrix, t_list *list, va_list args)
+static int	translation(t_list *list, va_list args, int fd)
 {
 	int		count;
-	char	**matrix_temp;
 	int		error;
 
 	error = translate(list, args);
 	va_end(args);
 	count = -1;
 	if (!error)
-		count = show(list);
+		count = show(list, fd);
 	ft_lstclear(&list, del_print);
-	matrix_temp = matrix;
-	while (*matrix)
-		free(*matrix++);
-	free(matrix_temp);
 	return (count);
 }
 
 int ft_dprintf(int fd, const char *format, ...)
 {
-	
+	t_list	*list_print;
+	va_list	args;
+
+	list_print = treat_args(format);
+	if (!list_print)
+		return (-1);
+	va_start(args, format);
+	return (translation(list_print, args, fd));
 }
 
 int	ft_printf(const char *format, ...)
@@ -56,27 +58,11 @@ int	ft_printf(const char *format, ...)
 	t_list	*list_print;
 	va_list	args;
 
-	list_print = 
-	if (!format)
-		return (-1);
-	first = 0;
-	if (*format != '%')
-		first = 0;
-	else
-		first = 1;
-	matrix = ft_separate(format, '%');
-	if (!*matrix[0])
-		return (-1);
-	list_print = to_t_list(matrix, first);
+	list_print = treat_args(format);
 	if (!list_print)
-	{
-		while (*matrix)
-			free(*matrix++);
-		free(matrix);
 		return (-1);
-	}
 	va_start(args, format);
-	return (translation(matrix, list_print, args));
+	return (translation(list_print, args, STDOUT_FILENO));
 }
 /*
 #include <stdio.h>

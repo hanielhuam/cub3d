@@ -25,18 +25,10 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 ${LIBFT}:
 	make -C ${LIBFT_DIR}
 
-test: 
-	make -C ${TEST_DIR}
-	./${TEST_DIR}/test
-
-${TEST_OBJ_DIR}/%.o: ${TEST_SRC_DIR}/%.c
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) ${TEST_INCLUDE} -c $< -o $@
-
 clean:
-	rm -rf ${OBJ_DIR} && make -C ${LIBFT_DIR} clean && rm -rf ${TEST_OBJ_DIR}
+	rm -rf ${OBJ_DIR} && make -C ${LIBFT_DIR} clean
 
 fclean: clean
-	rm -rf ${NAME} && rm -rf ${LIBFT} && rm -rf ${TEST}
+	rm -rf ${NAME} && rm -rf ${LIBFT}
 
 re: fclean all

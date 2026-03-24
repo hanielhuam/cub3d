@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 21:09:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/10 20:44:29 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/23 21:42:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-
+	(void)argc;
+	(void)argv;
+	ft_printf("testando o %s\n", argv[0]);
+	ft_printf("vou gravar o nome da %s em outro arquivo\n", argv[0]);
 	return (0);
 }
