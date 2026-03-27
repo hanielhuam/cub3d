@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"

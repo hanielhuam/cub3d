@@ -47,12 +47,10 @@ static char	*get_together(t_list *list)
 	return (result);
 }
 
-char	*str_format(const char *format, ...)
+char	*ft_strformat(const char *format, ...)
 {
 	t_list	*list;
-	va_list	args;
-	char	*result;
-
+	va_list args;
 	list = treat_args(format);
 	if (!list)
 		return (NULL);
