@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 20:39:39 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/26 22:02:42 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/27 22:09:08 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,14 @@ static char	*get_together(t_list *list)
 {
 	char	*result;
 
-	result = NULL;
+	result = ft_calloc(1, sizeof(char));
+	while (list)
+	{
+		result = ft_join_free(result, ((t_print *)list->content)->replaciment);
+		if (!result)
+			return (NULL);
+		list = list->next;
+	}
 	return (result);
 }
 
