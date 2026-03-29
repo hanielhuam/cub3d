@@ -46,7 +46,7 @@ static char	*get_together(t_list *list)
 	result = ft_calloc(1, sizeof(char));
 	while (list)
 	{
-		result = ft_join_free(result, ((t_print *)list->content)->replaciment);
+		result = ft_strjoin_free(result, ((t_print *)list->content)->replaciment);
 		if (!result)
 			return (NULL);
 		list = list->next;
@@ -58,14 +58,16 @@ char	*ft_strformat(const char *format, ...)
 {
 	t_list	*list;
 	va_list args;
+	char	*result;
+
 	list = treat_args(format);
 	if (!list)
 		return (NULL);
-	va_start(format);
+	va_start(args, format);
 	result = NULL;
-	if (!trenslate(list, args))
+	if (!translate(list, args))
 		result = get_together(list);
 	va_end(args);
-	ft_lstclear(list, del_print);
+	ft_lstclear(&list, del_print);
 	return (result);
 }
