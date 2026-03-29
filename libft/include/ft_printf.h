@@ -45,7 +45,7 @@ int		ft_dprintf(int fd, const char *format, ...);
 t_list  *to_t_list(char **matrix, int first);
 t_print	*create_print(char *str);
 t_list	*treat_args(const char *format);
-char	*str_format(const char *format, ...);
+char	*ft_strformat(const char *format, ...);
 int		translate(t_list *list, va_list args);
 char	*translate_characters(t_print *print, va_list args, char type);
 char	*translate_digits(t_print *print, va_list args);
