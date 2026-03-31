@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/10 20:44:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/30 19:59:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct s_file_game
 	char	*file_name;
 }			t_file_game;
 
-
+int		argc_validation(int argc);
 
 #endif

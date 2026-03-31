@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 20:39:39 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/27 22:09:08 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/30 20:39:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*get_together(t_list *list)
 	result = ft_calloc(1, sizeof(char));
 	while (list)
 	{
-		result = ft_strjoin_free(result, ((t_print *)list->content)->replaciment);
+		result = ft_join_free(result, ((t_print *)list->content)->replaciment);
 		if (!result)
 			return (NULL);
 		list = list->next;
@@ -57,7 +57,7 @@ static char	*get_together(t_list *list)
 char	*ft_strformat(const char *format, ...)
 {
 	t_list	*list;
-	va_list args;
+	va_list	args;
 	char	*result;
 
 	list = treat_args(format);

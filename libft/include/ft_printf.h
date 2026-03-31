@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 20:24:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/24 18:44:19 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/30 20:07:40 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_comand
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
-t_list  *to_t_list(char **matrix, int first);
+t_list	*to_t_list(char **matrix, int first);
 t_print	*create_print(char *str);
 t_list	*treat_args(const char *format);
 char	*ft_strformat(const char *format, ...);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/23 21:26:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/03/30 20:12:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	translation(t_list *list, va_list args, int fd)
 	return (count);
 }
 
-int ft_dprintf(int fd, const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
 	t_list	*list_print;
 	va_list	args;

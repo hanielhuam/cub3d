@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_join_free.c                                     :+:      :+:    :+:   */
+/*   argc_validation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/27 21:47:40 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/30 20:10:18 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/03/30 19:54:29 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/03/30 20:00:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-char	*ft_join_free(char *s1, char *s2)
+int	argc_validation(int argc)
 {
-	char	*temp;
-
-	temp = ft_strjoin(s1, s2);
-	if (!temp)
-		return (NULL);
-	free(s1);
-	return (temp);
+	if (argc != 2)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: too few arguments\n");
+		return (1);
+	}
+	return (0);
 }
