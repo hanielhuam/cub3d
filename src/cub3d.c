@@ -14,8 +14,12 @@
 
 int	main(int argc, char **argv)
 {
+	t_game	*geme;
+
 	if (argc_validation(argc))
 		return (1);
-	(void)argv;
+	game = create_validate_game(argv[1]);
+	if (!game)
+		return (1);	
 	return (0);
 }

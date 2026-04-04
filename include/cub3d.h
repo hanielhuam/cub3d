@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/03/30 19:59:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:58:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,29 @@
 # include "ft_dlist.h"
 # include "get_next_line.h"
 
-typedef struct s_file_game
+typedef struct s_assets
 {
-	char	*file_name;
-}			t_file_game;
+	char			*no_texture;
+	char			*so_texture;
+	char			*wo_texture;
+	char			*ea_texture;
+	unsigned char	*ceiling_color;
+	unsigned char	*floor_color;
+}					t_assets;
+
+typedef struct s_game
+{
+	char		**board;
+	t_assets	*assests;
+}			t_game;
 
 int		argc_validation(int argc);
+t_game	*create_validate_game(char *file_nema);
+int		validate_open_file(char *file_game);
+t_game	*validate_game_file(int fd);
+char	validate_game(t_game *game);
+void	del_assets(t_assts *assests);
+void	del_board(char **board);
+void	del_game(t_game *game);
 
 #endif
