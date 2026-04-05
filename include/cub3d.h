@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/04 00:58:39 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/05 00:16:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_assets
 {
 	char			*no_texture;
 	char			*so_texture;
-	char			*wo_texture;
+	char			*we_texture;
 	char			*ea_texture;
 	unsigned char	*ceiling_color;
 	unsigned char	*floor_color;
@@ -37,7 +37,7 @@ typedef struct s_assets
 typedef struct s_game
 {
 	char		**board;
-	t_assets	*assests;
+	t_assets	*assets;
 }			t_game;
 
 int		argc_validation(int argc);
@@ -45,7 +45,7 @@ t_game	*create_validate_game(char *file_nema);
 int		validate_open_file(char *file_game);
 t_game	*validate_game_file(int fd);
 char	validate_game(t_game *game);
-void	del_assets(t_assts *assests);
+void	del_assets(t_assets *assests);
 void	del_board(char **board);
 void	del_game(t_game *game);
 

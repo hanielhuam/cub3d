@@ -11,6 +11,7 @@ t_game  *create_validate_game(char *file_game)
     if (fd < 0)
         return (NULL);
     game = validate_game_file(fd);
+    close(fd);
     if (!game)
         return (NULL);
     if (!validate_game(game))
