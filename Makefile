@@ -8,9 +8,9 @@ LDFLAGS = -L${LIBFT_DIR}/bin -lft
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
 
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
-		${SRC_DIR}/del/del_game.c ${SRC_DIR}/validate/validate_open_file.c \
-		${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validate/validate_geme_file.c \
-		${SRC_DIR}/validate/validate_game.c
+	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validate/validate_open_file.c \
+	   ${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validate/validate_game.c \
+	   ${SRC_DIR}/validate/validate_geme_file.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
