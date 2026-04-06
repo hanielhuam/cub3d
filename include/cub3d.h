@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/05 00:16:44 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/05 21:55:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@
 # include "ft_list.h"
 # include "ft_dlist.h"
 # include "get_next_line.h"
+
+typedef enum e_tok_type
+{
+	TK_NO,
+	TK_SO,
+	TK_EA,
+	TK_WE,
+	TK_F,
+	TK_C,
+	TK_MAP,
+	TK_NL,
+	TK_OTHER
+}	t_tok_type;
+
+typedef struct s_token
+{
+	t_tok_type	type;
+	char		*line;
+}				t_token;
 
 typedef struct s_assets
 {
