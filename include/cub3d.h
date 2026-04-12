@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/10 22:56:23 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/11 21:53:27 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "ft_list.h"
 # include "ft_dlist.h"
 # include "get_next_line.h"
+
+# define MAP_ELEMENTS "01 NSWE"
 
 typedef enum e_tok_type
 {

@@ -6,20 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 20:53:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/10 22:56:16 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/11 21:53:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static t_tok_type	compare_token(char *line)
-{
-	
-
-	while (ft_isspace(*line))
-		line++;
-	
-}
 
 t_token	*create_token_by_line(char *line)
 {
@@ -41,4 +32,5 @@ t_token	*create_token_by_line(char *line)
 	}
 	token->line = dup;
 	token->type = compare_token(line);
+	return (token);
 }
