@@ -15,12 +15,12 @@
 static t_token	*get_rsources_tokens(void)
 {
 	t_token	tokens[6] = {
-	{TK_NO, "NO"},
-	{TK_SO, "SO"},
-	{TK_EA, "EA"},
-	{TK_WE, "WE"},
-	{TK_F, "F"},
-	{TK_C, "C"},
+	{TK_NO, "NO "},
+	{TK_SO, "SO "},
+	{TK_EA, "EA "},
+	{TK_WE, "WE "},
+	{TK_F, "F "},
+	{TK_C, "C "},
 	{TK_OTHER, NULL}
 	};
 
@@ -36,6 +36,7 @@ static t_tok_type	compare_resource_token(char *line)
 	{
 		if (!ft_strncmp(line, token->line, ft_strlen(token->line)))
 			return (token->type);
+		tokens++;
 	}
 	return (token->type);
 }

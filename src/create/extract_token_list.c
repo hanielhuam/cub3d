@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 19:34:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/07 21:19:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:27:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_list	*extract_token_list(int fd)
 			return (NULL);
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (list);
 }
