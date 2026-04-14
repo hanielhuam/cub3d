@@ -14,7 +14,7 @@
 
 static t_token	*get_rsources_tokens(void)
 {
-	t_token	tokens[6] = {
+	static t_token	tokens[6] = {
 	{TK_NO, "NO "},
 	{TK_SO, "SO "},
 	{TK_EA, "EA "},
