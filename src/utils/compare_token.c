@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static t_token	*get_rsources_tokens(void)
+t_token	*get_resources_tokens(void)
 {
 	static t_token	tokens[6] = {
 	{TK_NO, "NO "},
