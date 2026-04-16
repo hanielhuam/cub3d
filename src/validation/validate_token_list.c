@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:34:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/16 00:10:16 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/16 10:38:42 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 static int	validate_token_order(t_list *tokens)
 {
-	
+	t_token	*temp;
+
+	while (((t_token *)tokens->content)->type != TK_MAP)
+		tokens = tokens->next;
+	while (((t_token *)tokens->content)->type == TK_MAP \
+			|| ((t_token *)tokens->content)->type == TK_NL)
+		tokens = tokens->next;
+	if (!tokens)
+		return (0);
+	ft_dprintf(STDERR_FILENO, "Error: is not allow to have line after map\n");
+	return (1);
 }
 
 static int	evaluate_count_elements(int element, int count)
@@ -41,7 +51,7 @@ static int	validate_elements_count(t_list *tokens)
 {
 	int		i;
 	int		elements[8];
-	t_token	temp;
+	t_token	*temp;
 
 	elements = {0};
 	while (tokens)
