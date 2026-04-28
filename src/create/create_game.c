@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:44:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/27 21:27:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/28 20:24:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ static t_game	*calloc_game(void)
 t_game	*create_game(t_list *tokens)
 {
 	t_game	*game;
+	int		board_lenght;
 
 	game = calloc_game();
 	if (!game)
 		return (NULL);
-	
+	board_lenght = assign_assets(game, tokens);
 }
