@@ -15,7 +15,9 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/create/extract_token_list.c ${SRC_DIR}/del/del_token.c \
 	   ${SRC_DIR}/create/create_token_by_line.c \
 	   ${SRC_DIR}/utils/compare_tokens.c ${SRC_DIR}/create/create_game.c \
-	   ${SRC_DIR}/creat/assign_assets.c ${SRC_DIR}/utils/dup_str.c
+	   ${SRC_DIR}/create/assign_assets.c ${SRC_DIR}/utils/dup_str.c \
+	   ${SRC_DIR}/constructor/texture_constructor.c \
+	   ${SRC_DIR}/constructor/color_constructor.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

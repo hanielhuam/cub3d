@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:43:23 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/29 19:45:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/29 21:27:18 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	attribute_assets(t_game *game, t_token *token)
 		so_texture_constructor,
 		ea_texture_constructor,
 		we_texture_constructor,
-		floor_texture_constructor,
-		ceiling_texture_constructor
+		floor_color_constructor,
+		ceiling_color_constructor
 	};
 
 	if (token->type == TK_NL)
