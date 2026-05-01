@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/29 21:33:03 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/04/30 23:23:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		validate_open_file(char *file_game);
 t_game	*validate_game_file(int fd);
 char	validate_game(t_game *game);
 int		validate_token_list(t_list *tokens);
+int		color_validation(char *line);
 void	del_assets(t_assets *assests);
 void	del_board(char **board);
 void	del_game(t_game *game);
