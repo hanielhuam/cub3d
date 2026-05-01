@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 21:17:42 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/30 23:22:32 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/01 18:47:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static unsigned char	*extract_colors(char *line)
 {
 	unsigned char	*color;
 
-	if (validate_color(line))
+	if (color_validation(line))
 		return (NULL);
 	color = (unsigned char *)ft_calloc(3, sizeof(char));
 	if (!color)
