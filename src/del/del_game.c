@@ -28,16 +28,6 @@ void	del_assets(t_assets *assets)
 		free(assets->ceiling_color);
 }
 
-void	del_board(char **board)
-{
-	char	*temp;
-
-	temp = *board;
-	while (temp)
-		free(temp++);
-	free(board);
-}
-
 void	del_game(t_game *game)
 {
 	if (!game)
@@ -45,5 +35,5 @@ void	del_game(t_game *game)
 	if (game->assets)
 		del_assts(game->assets);
 	if (game->board)
-		del_board(game->board);
+		del_split(game->board);
 }

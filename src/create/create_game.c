@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:44:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/28 20:24:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/03 00:30:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,21 @@ t_game	*create_game(t_list *tokens)
 {
 	t_game	*game;
 	int		board_lenght;
+	char	**bord;
 
 	game = calloc_game();
 	if (!game)
 		return (NULL);
 	board_lenght = assign_assets(game, tokens);
+	if (!board_lenght)
+	{
+		del_game(game);
+		return (NULL);
+	}
+	board = map_constructor(tokens, board_lenght);
+	if (!board)
+	{
+		del_game(game);
+		return (NULL);
+	}
 }

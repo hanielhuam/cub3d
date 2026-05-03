@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/30 23:23:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/03 00:30:11 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ char	validate_game(t_game *game);
 int		validate_token_list(t_list *tokens);
 int		color_validation(char *line);
 void	del_assets(t_assets *assests);
-void	del_board(char **board);
 void	del_game(t_game *game);
 void	del_token(void *token);
+void	del_split(char **split);
 t_list	*extract_token_list(int fd);
 t_list	*get_resource_tokens(void);
 t_token *create_token_by_line(char *line);
@@ -84,5 +84,6 @@ int		ea_texture_constructor(t_game *game, char *line);
 int		we_texture_constructor(t_game *game, char *line);
 int 	floor_color_contructor(t_game *game, char *line);
 int 	ceiling_color_contructor(t_game *game, char *line);
+char	**map_contructor(t_list *tokens, int board_lenght);
 
 #endif

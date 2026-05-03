@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:43:23 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/29 21:27:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/02 21:16:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	assign_assets(t_game *game, t_list *tokens)
 	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 	{
 		if (attribute_assets(game, (t_token *)tokens->content))
+			return (0);
 		tokens = tokens->next;
 	}
 	count = 0;
