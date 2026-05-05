@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_game.c                                    :+:      :+:    :+:   */
+/*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/05 20:39:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/04 20:40:25 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/05/04 20:19:16 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/05/04 20:26:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_assets_file(t_assests *assets)
+int	check_file(char *file)
 {
-	if (check_file(assests->no_texture) || check_file(assests->so_texture) || \
-			check_file(assets->we_texture) || check_file(assets->ea_texture))
-		return (1);
-	return (0);
-}
+	int	fd;
 
-int	validate_game(t_game *game)
-{
-	if (check_assets_file(game->assets))
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: unable to open %s file\n", file);
 		return (1);
-	if (board_validator(game->board))
-		return (1);
+	}
+	close(fd);
 	return (0);
 }
