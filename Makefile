@@ -20,7 +20,8 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/constructor/color_constructor.c \
 	   ${SRC_DIR}/constructor/map_constructor.c \
 	   ${SRC_DIR}/validate/color_validation.c ${SRC_DIR}/del/del_split.c \
-	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validate/board_validator.c
+	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validate/board_validator.c \
+	   ${SRC_DIR}/create/create_v_board.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
