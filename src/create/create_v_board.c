@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:29:06 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/06 19:48:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:38:55 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,44 @@ static int	*get_dimensions(char **board)
 	return (dimensions);
 }
 
-static char	*get_spaceline(lenght)
+static char	*get_spaceline(int lenght)
 {
-	
+	int		count;
+	char	*space_line;
+
+	space_line = ft_calloc(lenght + 1, sizeof(char));
+	if (!space_line)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: unable to alloc space_line\n");
+		return (NULL);
+	}
+	count = 0;
+	while (count < lenght)
+		space_line[count++] = ' ';
+	return (space_line);
+}
+
+static char	*fill_v_board(char *line, int lenght)
+{
+	int		count;
+	char	*result;
+
+	result = ft_calloc(lenght + 1, sizeof(char));
+	if (!result)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: unable to alloc v_board_line\n");
+		return (NULL);
+	}
+	count = 0;
+	result[count] = ' ';
+	count++;
+	while (count < lenght - 1)
+	{
+		result[count] = line[count - 1];
+		count++;
+	}
+	result[count] = ' ';
+	return (result);
 }
 
 static int	fill_v_board(char **v_board, char **board, int lenght)
@@ -48,12 +83,12 @@ static int	fill_v_board(char **v_board, char **board, int lenght)
 	int	count;
 
 	count = 0;
-	v_board[count] = get_spaceline(lenght);
+	v_board[count] = get_spaceline(lenght + 2);
 	if (!v_board[count])
 		return (1);
 	while (board[count])
 	{
-		v_board[count + 1] = fill_v_board(v_board[count], lenght);
+		v_board[count + 1] = fill_v_board(board[count], lenght + 2);
 		if (!v_board[count + 1])
 			return (1);
 		count++;
@@ -86,4 +121,6 @@ char	**create_v_board(char **board)
 		del_split(v_board);
 		return (NULL);
 	}
+	free(dimensions);
+	return (v_board);
 }
