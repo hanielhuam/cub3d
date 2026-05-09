@@ -8,10 +8,10 @@ LDFLAGS = -L${LIBFT_DIR}/bin -lft
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
 
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
-	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validate/validate_open_file.c \
-	   ${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validate/validate_game.c \
-	   ${SRC_DIR}/validate/validate_geme_file.c \
-	   ${SRC_DIR}/validate/validate_token_list.c \
+	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validation/validate_open_file.c \
+	   ${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validation/validate_game.c \
+	   ${SRC_DIR}/validation/validate_geme_file.c \
+	   ${SRC_DIR}/validation/validate_token_list.c \
 	   ${SRC_DIR}/create/extract_token_list.c ${SRC_DIR}/del/del_token.c \
 	   ${SRC_DIR}/create/create_token_by_line.c \
 	   ${SRC_DIR}/utils/compare_tokens.c ${SRC_DIR}/create/create_game.c \
@@ -19,8 +19,8 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/constructor/texture_constructor.c \
 	   ${SRC_DIR}/constructor/color_constructor.c \
 	   ${SRC_DIR}/constructor/map_constructor.c \
-	   ${SRC_DIR}/validate/color_validation.c ${SRC_DIR}/del/del_split.c \
-	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validate/board_validator.c \
+	   ${SRC_DIR}/validation/color_validation.c ${SRC_DIR}/del/del_split.c \
+	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validation/board_validator.c \
 	   ${SRC_DIR}/create/create_v_board.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}

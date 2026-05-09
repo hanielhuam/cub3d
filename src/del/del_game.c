@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 20:33:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/05 20:37:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/08 23:29:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	del_game(t_game *game)
 	if (!game)
 		return ;
 	if (game->assets)
-		del_assts(game->assets);
+		del_assets(game->assets);
 	if (game->board)
 		del_split(game->board);
 }
