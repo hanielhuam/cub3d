@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 19:36:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/11 21:52:47 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/09 21:16:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_token	*get_resources_tokens(void)
 {
-	static t_token	tokens[6] = {
+	static t_token	tokens[7] = {
 	{TK_NO, "NO "},
 	{TK_SO, "SO "},
 	{TK_EA, "EA "},
@@ -29,16 +29,16 @@ t_token	*get_resources_tokens(void)
 
 static t_tok_type	compare_resource_token(char *line)
 {
-	t_tokens	*tokens;
+	t_token	*tokens;
 
 	tokens = get_resources_tokens();
-	while (token->line)
+	while (tokens->line)
 	{
-		if (!ft_strncmp(line, token->line, ft_strlen(token->line)))
-			return (token->type);
+		if (!ft_strncmp(line, tokens->line, ft_strlen(tokens->line)))
+			return (tokens->type);
 		tokens++;
 	}
-	return (token->type);
+	return (tokens->type);
 }
 
 static int	is_map_line(char *line)
@@ -52,7 +52,7 @@ static int	is_map_line(char *line)
 	return (1);
 }
 
-t_tok_type	compare_tokens(char *line)
+t_tok_type	compare_token(char *line)
 {
 	while (ft_isspace(*line))
 		line++;

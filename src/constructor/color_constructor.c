@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 21:17:42 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/02 19:06:35 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/09 22:08:36 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static char **pre_process_color(char *line)
 	count = 0;
 	while (split[count])
 	{
-		temp = ft_strtrim(split[count]);
-		if (!tenp)
+		temp = ft_strtrim(split[count], " ");
+		if (!temp)
 		{
 			ft_dprintf(STDERR_FILENO, "Error: unable to trim color\n");
 			del_split(split);
@@ -49,7 +49,7 @@ static int	make_color_array(unsigned char *color, char *line)
 	split = pre_process_color(line);
 	if (!split)
 		return (1);
-	count = 0
+	count = 0;
 	while (split[count])
 	{
 		result = ft_atoi(split[count]);
@@ -76,7 +76,7 @@ static unsigned char	*extract_colors(char *line)
 		ft_dprintf(STDERR_FILENO, "Error: can´t malloc color\n");
 		return (NULL);
 	}
-	line =+ 2;
+	line += 2;
 	while (*line && ft_isspace(*line))
 		line++;
 	if (make_color_array(color, line))
@@ -89,7 +89,7 @@ static unsigned char	*extract_colors(char *line)
 
 int	floor_color_contructor(t_game *game, char *line)
 {
-	unsigned char	*color
+	unsigned char	*color;
 
 	color = extract_color(line);
 	if (!color)
