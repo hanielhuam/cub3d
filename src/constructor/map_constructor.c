@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:30:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/03 00:29:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 20:33:09 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**map_constructor(t_list *tokens, int map_lenght)
 {
-	char	*temp
+	char	*temp;
 	int 	count;
 	char	**map;
 

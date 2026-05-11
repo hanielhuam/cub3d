@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:34:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/09 20:43:23 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 21:46:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	evaluate_count_elements(int element, int count)
 {
 	t_token	*resources;
 
-	resources = get_resource_tokens();
+	resources = get_resources_tokens();
 	if (element >= 0 && element <= 5 && count != 1)
 	{
 		ft_dprintf(STDERR_FILENO, \

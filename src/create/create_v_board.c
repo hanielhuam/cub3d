@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:29:06 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/07 18:38:55 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 21:21:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ static int	*get_dimensions(char **board)
 	int	height;
 	int	lenght;
 	int	*dimensions;
-	char **temp;
 
-	dimensions = ft_Calloc(2, sizeof(int));
+	dimensions = ft_calloc(2, sizeof(int));
 	if (!dimensions)
 	{
 		ft_dprintf(STDERR_FILENO, "Error: unable to malloc dimensions\n");
@@ -29,7 +28,7 @@ static int	*get_dimensions(char **board)
 	lenght = 0;
 	while (board[height])
 	{
-		if (ft_srlen(board[height]) > lenght)
+		if ((int)ft_strlen(board[height]) > lenght)
 			lenght = ft_strlen(board[height]);
 		height++;
 	}
@@ -55,7 +54,7 @@ static char	*get_spaceline(int lenght)
 	return (space_line);
 }
 
-static char	*fill_v_board(char *line, int lenght)
+static char	*fill_v_board_line(char *line, int lenght)
 {
 	int		count;
 	char	*result;
@@ -88,7 +87,7 @@ static int	fill_v_board(char **v_board, char **board, int lenght)
 		return (1);
 	while (board[count])
 	{
-		v_board[count + 1] = fill_v_board(board[count], lenght + 2);
+		v_board[count + 1] = fill_v_board_line(board[count], lenght + 2);
 		if (!v_board[count + 1])
 			return (1);
 		count++;
@@ -108,16 +107,16 @@ char	**create_v_board(char **board)
 	if (!dimensions)
 		return (NULL);
 	v_board = ft_calloc(dimensions[9] + 3, sizeof(char));
-	if (!v_voard)
+	if (!v_board)
 	{
 		ft_dprintf(STDERR_FILENO, "Error: unable to alloc v_board\n");
-		free(demensions);
+		free(dimensions);
 		return (NULL);
 	}
 	if (fill_v_board(v_board, board, dimensions[1]))
 	{
 		ft_dprintf(STDERR_FILENO, "Error: unable to alloc v_board\n");
-		free(demensions);
+		free(dimensions);
 		del_split(v_board);
 		return (NULL);
 	}

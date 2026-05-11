@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 21:17:42 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/09 22:08:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 21:49:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	make_color_array(unsigned char *color, char *line)
 	while (split[count])
 	{
 		result = ft_atoi(split[count]);
-		if (result < 0 && result > 255)
+		if (result < 0 || result > 255)
 		{
 			ft_dprintf(STDERR_FILENO, "Error: color %d out of range\n", result);
 			del_split(split);
@@ -62,6 +62,7 @@ static int	make_color_array(unsigned char *color, char *line)
 		color[count++] = (unsigned char)result;
 	}
 	del_split(split);
+	return (0);
 }
 
 static unsigned char	*extract_colors(char *line)
@@ -87,22 +88,22 @@ static unsigned char	*extract_colors(char *line)
 	return (color);
 }
 
-int	floor_color_contructor(t_game *game, char *line)
+int	floor_color_constructor(t_game *game, char *line)
 {
 	unsigned char	*color;
 
-	color = extract_color(line);
+	color = extract_colors(line);
 	if (!color)
 		return (1);
 	game->assets->floor_color = color;
 	return (0);
 }
 
-int	ceiling_color_contructor(t_game *game, char *line)
+int	ceiling_color_constructor(t_game *game, char *line)
 {
-	unsigned char	*color
+	unsigned char	*color;
 
-	color = extract_color(line);
+	color = extract_colors(line);
 	if (!color)
 		return (1);
 	game->assets->ceiling_color = color;

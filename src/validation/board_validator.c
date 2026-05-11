@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:41:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/07 20:11:08 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 20:40:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	check_player(char **board)
 	return (1);
 }
 
-static int	check_integruty(char **board, int x, int y, int lenght)
+static int	check_integrity(char **board, int x, int y, int lenght)
 {
 	if (x < 0 || y < 0 || x >= lenght)
 		return (0);
@@ -48,14 +48,15 @@ static int	check_integruty(char **board, int x, int y, int lenght)
 		return (0);
 	if (board[x][y] == ' ')
 		board[x][y] = 'X';
-	if (check_integruty(board, x + 1, y) || check_integruty(board, x - 1, y) \
-			|| check_integruty(board, x, y + 1) \
-			|| check_integruty(board, x, y - 1))
+	if (check_integrity(board, x + 1, y, lenght) \
+			|| check_integrity(board, x - 1, y, lenght) \
+			|| check_integrity(board, x, y + 1, lenght) \
+			|| check_integrity(board, x, y - 1, lenght))
 		return (1);
 	return (0);
 }
 
-static int get_lenght(board)
+static int get_lenght(char **board)
 {
 	int	count;
 
@@ -67,7 +68,7 @@ static int get_lenght(board)
 
 int	board_validator(char **board)
 {
-	int		count;
+	int		lenght;
 	char	**v_board;
 
 	if (check_player(board))

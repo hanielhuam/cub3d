@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/09 21:26:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/10 21:46:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		del_game(t_game *game);
 void		del_token(void *token);
 void		del_split(char **split);
 t_list		*extract_token_list(int fd);
-t_token		*get_resource_tokens(void);
+t_token		*get_resources_tokens(void);
 t_token		*create_token_by_line(char *line);
 t_game 		*create_game(t_list *tokens);
 char		**create_v_board(char **board);
