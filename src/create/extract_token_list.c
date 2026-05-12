@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 19:34:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/12 20:27:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/12 19:03:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_list	*extract_token_list(int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (!add_token2list(&list, line))
+		if (add_token2list(&list, line))
 		{
 			ft_lstclear(&list, del_token);
 			free(line);

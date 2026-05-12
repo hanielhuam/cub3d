@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 		return (1);
 	game = create_validate_game(argv[1]);
 	if (!game)
-		return (1);	
+		return (1);
+	del_game(game);
 	return (0);
 }

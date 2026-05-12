@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:34:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/10 21:46:41 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/12 20:24:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	validate_token_order(t_list *tokens)
 {
-	while (((t_token *)tokens->content)->type != TK_MAP)
+	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 		tokens = tokens->next;
-	while (((t_token *)tokens->content)->type == TK_MAP \
-			|| ((t_token *)tokens->content)->type == TK_NL)
+	while (tokens && (((t_token *)tokens->content)->type == TK_MAP \
+			|| ((t_token *)tokens->content)->type == TK_NL))
 		tokens = tokens->next;
 	if (!tokens)
 		return (0);
@@ -37,9 +37,14 @@ static int	evaluate_count_elements(int element, int count)
 				resources[element].line);
 		return (1);
 	}
-	if (element == 8 && count < 1)
+	if (element == 6 && count < 3)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: there is no map\n");
+		ft_dprintf(STDERR_FILENO, "Error: there is no possible map\n");
+		return (1);
+	}
+	if (element == 8 && count > 0)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: there is a strange element\n");
 		return (1);
 	}
 	return (0);

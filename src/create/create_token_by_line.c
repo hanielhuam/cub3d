@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 20:53:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/15 23:41:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/12 19:22:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_token	*create_token_by_line(char *line)
 		ft_dprintf(STDERR_FILENO, "Error: Unable to malloc token\n");
 		return (NULL);
 	}
+	line[ft_strlen(line) - 1] = '\0';
 	dup = ft_strdup(line);
 	if (!dup)
 	{

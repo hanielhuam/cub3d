@@ -1,7 +1,7 @@
-NO ./resource/north
-SO ./resource/south
-WE ./resource/west
-EA ./resource/east
+NO ./resource/north-texture
+SO ./resource/south-texture
+WE ./resource/west-texture
+EA ./resource/east-texture
 
 F 220,100,0
 C 225,30,0
