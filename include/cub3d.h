@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/10 21:46:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/13 19:46:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,34 @@ typedef struct s_game
 	t_assets	*assets;
 }			t_game;
 
-int			argc_validation(int argc);
-t_game		*create_validate_game(char *file_nema);
-int			validate_open_file(char *file_game);
-t_game		*validate_game_file(int fd);
-int			validate_game(t_game *game);
-int			validate_token_list(t_list *tokens);
-t_tok_type	compare_token(char *line);
-int			color_validation(char *line);
-int			check_file(char *file);
-int			board_validator(char **board);
-void		del_assets(t_assets *assests);
-void		del_game(t_game *game);
-void		del_token(void *token);
-void		del_split(char **split);
-t_list		*extract_token_list(int fd);
-t_token		*get_resources_tokens(void);
-t_token		*create_token_by_line(char *line);
-t_game 		*create_game(t_list *tokens);
-char		**create_v_board(char **board);
-int			assign_assets(t_game *game, t_list *tokens);
-char    	*dup_str(char *str);
-int			no_texture_constructor(t_game *game, char *line);
-int			so_texture_constructor(t_game *game, char *line);
-int			ea_texture_constructor(t_game *game, char *line);
-int			we_texture_constructor(t_game *game, char *line);
-int 		floor_color_constructor(t_game *game, char *line);
-int 		ceiling_color_constructor(t_game *game, char *line);
-char		**map_constructor(t_list *tokens, int board_lenght);
+int				argc_validation(int argc);
+t_game			*create_validate_game(char *file_nema);
+int				validate_open_file(char *file_game);
+t_game			*validate_game_file(int fd);
+int				validate_game(t_game *game);
+int				validate_token_list(t_list *tokens);
+t_tok_type		compare_token(char *line);
+int				color_validation(char *line);
+int				check_file(char *file);
+int				board_validator(char **board);
+void			del_assets(t_assets *assests);
+void			del_game(t_game *game);
+void			del_token(void *token);
+void			del_split(char **split);
+t_list			*extract_token_list(int fd);
+unsigned char	*extract_colors(char *line);
+t_token			*get_resources_tokens(void);
+t_token			*create_token_by_line(char *line);
+t_game 			*create_game(t_list *tokens);
+char			**create_v_board(char **board);
+int				assign_assets(t_game *game, t_list *tokens);
+char    		*dup_str(char *str);
+int				no_texture_constructor(t_game *game, char *line);
+int				so_texture_constructor(t_game *game, char *line);
+int				ea_texture_constructor(t_game *game, char *line);
+int				we_texture_constructor(t_game *game, char *line);
+int 			floor_color_constructor(t_game *game, char *line);
+int 			ceiling_color_constructor(t_game *game, char *line);
+char			**map_constructor(t_list *tokens, int board_lenght);
 
 #endif

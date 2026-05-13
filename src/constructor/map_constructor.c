@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 21:30:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/10 20:33:09 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/13 20:09:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	**map_constructor(t_list *tokens, int map_lenght)
 		ft_dprintf(STDERR_FILENO, "Error: unable to alloc board map\n");
 		return (NULL);
 	}
-	while (!tokens && ((t_token *)tokens->content)->type != TK_MAP)
+	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 		tokens = tokens->next;
 	count = 0;
-	while (!tokens && ((t_token *)tokens->content)->type == TK_MAP)
+	while (tokens && ((t_token *)tokens->content)->type == TK_MAP)
 	{
 		temp = dup_str(((t_token *)tokens->content)->line);
 		if (!temp)
