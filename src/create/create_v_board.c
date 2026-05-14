@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:29:06 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/10 21:21:39 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:48:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static char	*get_spaceline(int lenght)
 static char	*fill_v_board_line(char *line, int lenght)
 {
 	int		count;
+	int		line_lenght;
 	char	*result;
 
 	result = ft_calloc(lenght + 1, sizeof(char));
@@ -68,12 +69,14 @@ static char	*fill_v_board_line(char *line, int lenght)
 	count = 0;
 	result[count] = ' ';
 	count++;
-	while (count < lenght - 1)
+	line_lenght = ft_strlen(line);
+	while (count <= line_lenght)
 	{
 		result[count] = line[count - 1];
 		count++;
 	}
-	result[count] = ' ';
+	while (count < lenght)
+		result[count++] = ' ';
 	return (result);
 }
 
@@ -106,7 +109,7 @@ char	**create_v_board(char **board)
 	dimensions = get_dimensions(board);
 	if (!dimensions)
 		return (NULL);
-	v_board = ft_calloc(dimensions[9] + 3, sizeof(char));
+	v_board = ft_calloc(dimensions[0] + 3, sizeof(char));
 	if (!v_board)
 	{
 		ft_dprintf(STDERR_FILENO, "Error: unable to alloc v_board\n");
