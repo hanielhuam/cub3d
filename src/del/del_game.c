@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 20:33:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/08 23:29:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:40:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	del_assets(t_assets *assets)
 	if (assets->so_texture)
 		free(assets->so_texture);
 	if (assets->we_texture)
-		 free(assets->we_texture);
+		free(assets->we_texture);
 	if (assets->ea_texture)
 		free(assets->ea_texture);
 	if (assets->floor_color)

@@ -6,14 +6,14 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:41:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/14 16:17:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:43:12 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char **pre_process_color(char *line)
-{	
+static char	**pre_process_color(char *line)
+{
 	int		count;
 	char	**split;
 	char	*temp;

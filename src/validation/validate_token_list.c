@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:34:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/12 20:24:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:37:40 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	validate_token_order(t_list *tokens)
 {
 	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 		tokens = tokens->next;
-	while (tokens && (((t_token *)tokens->content)->type == TK_MAP \
-			|| ((t_token *)tokens->content)->type == TK_NL))
+	while (tokens && (((t_token *)tokens->content)->type == TK_MAP || \
+			((t_token *)tokens->content)->type == TK_NL))
 		tokens = tokens->next;
 	if (!tokens)
 		return (0);

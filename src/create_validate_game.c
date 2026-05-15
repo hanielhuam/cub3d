@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 20:30:21 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/04/05 20:32:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:17:54 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_game	*create_validate_game(char *file_game)
 {
-    int		fd;
-    t_game	*game;
+	int		fd;
+	t_game	*game;
 
 	fd = validate_open_file(file_game);
 	if (fd < 0)

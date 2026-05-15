@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 21:17:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/13 16:05:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:37:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*extract_texture(char *line, char *errmsg)
 		line++;
 	if (!*line)
 	{
-		ft_dprintf(STDERR_FILENO, errmsg);	
+		ft_dprintf(STDERR_FILENO, errmsg);
 		return (NULL);
 	}
 	return (dup_str(line));

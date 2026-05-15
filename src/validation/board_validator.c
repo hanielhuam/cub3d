@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:41:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/10 20:40:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:37:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ static int	check_integrity(char **board, int x, int y, int lenght)
 		return (0);
 	if (board[x][y] == ' ')
 		board[x][y] = 'X';
-	if (check_integrity(board, x + 1, y, lenght) \
-			|| check_integrity(board, x - 1, y, lenght) \
-			|| check_integrity(board, x, y + 1, lenght) \
-			|| check_integrity(board, x, y - 1, lenght))
+	if (check_integrity(board, x + 1, y, lenght) || \
+			check_integrity(board, x - 1, y, lenght) || \
+			check_integrity(board, x, y + 1, lenght) || \
+			check_integrity(board, x, y - 1, lenght))
 		return (1);
 	return (0);
 }
 
-static int get_lenght(char **board)
+static int	get_lenght(char **board)
 {
 	int	count;
 
