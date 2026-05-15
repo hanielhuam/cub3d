@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 21:17:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/14 21:37:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/15 14:01:15 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	no_texture_constructor(t_game *game, char *line)
 {
 	char	*texture;
 
-	texture = extract_texture(line, \
+	texture = extract_texture(line,
 			"Error: there is no value for NO texture\n");
 	if (!texture)
 		return (1);
@@ -41,29 +41,31 @@ int	so_texture_constructor(t_game *game, char *line)
 {
 	char	*texture;
 
-	texture = extract_texture(line, \
+	texture = extract_texture(line,
 			"Error: there is no value for SO texture\n");
 	if (!texture)
 		return (1);
 	game->assets->so_texture = texture;
 	return (0);
 }
+
 int	ea_texture_constructor(t_game *game, char *line)
 {
 	char	*texture;
 
-	texture = extract_texture(line, \
+	texture = extract_texture(line,
 			"Error: there is no value for EA texture\n");
 	if (!texture)
 		return (1);
 	game->assets->ea_texture = texture;
 	return (0);
 }
+
 int	we_texture_constructor(t_game *game, char *line)
 {
 	char	*texture;
 
-	texture = extract_texture(line, \
+	texture = extract_texture(line,
 			"Error: there is no value for WE texture\n");
 	if (!texture)
 		return (1);

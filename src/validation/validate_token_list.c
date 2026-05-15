@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:34:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/14 21:37:40 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/15 14:02:30 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	validate_token_order(t_list *tokens)
 {
 	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 		tokens = tokens->next;
-	while (tokens && (((t_token *)tokens->content)->type == TK_MAP || \
-			((t_token *)tokens->content)->type == TK_NL))
+	while (tokens && (((t_token *)tokens->content)->type == TK_MAP
+			|| ((t_token *)tokens->content)->type == TK_NL))
 		tokens = tokens->next;
 	if (!tokens)
 		return (0);
@@ -32,9 +32,9 @@ static int	evaluate_count_elements(int element, int count)
 	resources = get_resources_tokens();
 	if (element >= 0 && element <= 5 && count != 1)
 	{
-		ft_dprintf(STDERR_FILENO, \
-				"Error: should have only 1 %s in the .cub file\n", \
-				resources[element].line);
+		ft_dprintf(STDERR_FILENO,
+			"Error: should have only 1 %s in the .cub file\n",
+			resources[element].line);
 		return (1);
 	}
 	if (element == 6 && count < 3)
