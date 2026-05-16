@@ -76,7 +76,7 @@ int	board_validator(char **board)
 	v_board = create_v_board(board);
 	if (!v_board)
 		return (1);
-	lenght = get_lenght(board);
+	lenght = get_lenght(v_board);
 	if (check_integrity(v_board, 0, 0, lenght))
 	{
 		del_split(v_board);

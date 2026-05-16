@@ -95,7 +95,7 @@ static int	fill_v_board(char **v_board, char **board, int lenght)
 			return (1);
 		count++;
 	}
-	v_board[count + 1] = get_spaceline(lenght);
+	v_board[count + 1] = get_spaceline(lenght + 2);
 	if (!v_board[count + 1])
 		return (1);
 	return (0);
@@ -109,7 +109,7 @@ char	**create_v_board(char **board)
 	dimensions = get_dimensions(board);
 	if (!dimensions)
 		return (NULL);
-	v_board = ft_calloc(dimensions[0] + 3, sizeof(char));
+	v_board = ft_calloc(dimensions[0] + 3, sizeof(char *));
 	if (!v_board)
 	{
 		ft_dprintf(STDERR_FILENO, "Error: unable to alloc v_board\n");

@@ -26,6 +26,7 @@ void	del_assets(t_assets *assets)
 		free(assets->floor_color);
 	if (assets->ceiling_color)
 		free(assets->ceiling_color);
+	free(assets);
 }
 
 void	del_game(t_game *game)
@@ -36,4 +37,5 @@ void	del_game(t_game *game)
 		del_assets(game->assets);
 	if (game->board)
 		del_split(game->board);
+	free(game);
 }

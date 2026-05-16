@@ -85,7 +85,7 @@ static int	validate_elements_count(t_list *tokens)
 	if (!elements)
 		return (1);
 	i = 0;
-	while (i < 9)
+	while (i < 8)
 	{
 		if (evaluate_count_elements(i, elements[i]))
 		{

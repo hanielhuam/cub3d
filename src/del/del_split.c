@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 16:47:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/02 18:43:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/15 21:37:54 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	del_split(char **split)
 	while (*split)
 	{
 		free(*split);
-		*split = NULL;
+		*split++ = NULL;
 	}
 	free(temp);
 }
