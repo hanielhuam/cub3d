@@ -16,6 +16,8 @@ void	del_split(char **split)
 {
 	char	**temp;
 
+	if (!split)
+		return ;
 	temp = split;
 	while (*split)
 	{

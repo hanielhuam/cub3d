@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:19:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/13 20:21:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/16 14:06:30 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error:");
 		ft_dprintf(STDERR_FILENO, "Error: unable to open %s file\n", file);
 		return (1);
 	}

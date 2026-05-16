@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:41:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/16 00:11:06 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/16 14:20:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	check_player(char **board)
 	}
 	if (count == 1)
 		return (0);
-	ft_dprintf(STDERR_FILENO, "Error: player apears %d times on the board\n");
+	ft_dprintf(STDERR_FILENO, "Error: player apears %d times on the board\n",
+		count);
 	return (1);
 }
 
@@ -80,6 +81,7 @@ int	board_validator(char **board)
 	if (check_integrity(v_board, 0, 0, lenght))
 	{
 		del_split(v_board);
+		ft_dprintf(STDERR_FILENO, "Error: the map isn`t totaly closed\n");
 		return (1);
 	}
 	del_split(v_board);

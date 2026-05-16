@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:41:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/14 21:43:12 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/16 14:54:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ static int	make_color_array(unsigned char *color, char *line)
 
 	split = pre_process_color(line);
 	if (!split || !is_3_colors(split))
+	{
+		del_split(split);
 		return (1);
+	}
 	count = 0;
 	while (split[count])
 	{
