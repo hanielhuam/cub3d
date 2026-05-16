@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:41:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/15 13:52:55 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/16 00:11:06 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int	check_integrity(char **board, int x, int y, int lenght)
 {
 	if (x < 0 || y < 0 || x >= lenght)
 		return (0);
-	if (ft_strchr("WSNEDA0", board[x][y]))
-		return (1);
 	if (board[x][y] == '1' || board[x][y] == '\0' || board[x][y] == 'X')
 		return (0);
+	if (ft_strchr("WSNEDA0", board[x][y]))
+		return (1);
 	if (board[x][y] == ' ')
 		board[x][y] = 'X';
 	if (check_integrity(board, x + 1, y, lenght)
