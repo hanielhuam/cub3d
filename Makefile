@@ -4,8 +4,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
-LDFLAGS = -L${LIBFT_DIR}/bin -lft 
-INCLUDE = -Iinclude -I${LIBFT_DIR}/include
+LDFLAGS = -L${LIBFT_DIR}/bin -lft -Lmlx -lmlx -lXext -lX11 -lm -lz
+INCLUDE = -Iinclude -I${LIBFT_DIR}/include -Imlx
 
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validation/validate_open_file.c \

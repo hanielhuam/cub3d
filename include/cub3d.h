@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/14 21:16:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/20 19:29:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "ft_list.h"
 # include "ft_dlist.h"
 # include "get_next_line.h"
+# include "mlx.h"
 
 # define MAP_ELEMENTS "01 NSWE"
 
@@ -59,6 +60,9 @@ typedef struct s_game
 {
 	char		**board;
 	t_assets	*assets;
+	void		*mlx;
+	void		*window;
+	void		*img;
 }			t_game;
 
 int				argc_validation(int argc);
