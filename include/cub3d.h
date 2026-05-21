@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/20 19:29:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/21 20:01:33 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,18 @@ typedef struct s_assets
 	unsigned char	*floor_color;
 }					t_assets;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*window;
+	void	*img;
+}			t_mlx;
+
 typedef struct s_game
 {
 	char		**board;
 	t_assets	*assets;
-	void		*mlx;
-	void		*window;
-	void		*img;
+	t_mlx		*mlx;
 }			t_game;
 
 int				argc_validation(int argc);
@@ -79,6 +84,7 @@ void			del_assets(t_assets *assests);
 void			del_game(t_game *game);
 void			del_token(void *token);
 void			del_split(char **split);
+void			del_mlx(t_mlx *mlx);
 t_list			*extract_token_list(int fd);
 unsigned char	*extract_colors(char *line);
 t_token			*get_resources_tokens(void);
@@ -94,5 +100,7 @@ int				we_texture_constructor(t_game *game, char *line);
 int				floor_color_constructor(t_game *game, char *line);
 int				ceiling_color_constructor(t_game *game, char *line);
 char			**map_constructor(t_list *tokens, int board_lenght);
+int				configure_game(t_game *game);
+void			run(t_game *game);
 
 #endif

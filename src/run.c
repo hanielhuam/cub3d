@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 21:09:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/21 19:10:15 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/05/21 19:55:33 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/05/21 20:00:29 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	run(t_game *game)
 {
-	t_game	*game;
-
-	if (argc_validation(argc))
-		return (1);
-	game = create_validate_game(argv[1]);
-	if (!game)
-		return (1);
-	if (!configure_game(game))
-		run(game);
-	del_game(game);
-	return (0);
+	mlx_loop(game->mlx->mlx);
 }

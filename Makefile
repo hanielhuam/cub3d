@@ -4,7 +4,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
-LDFLAGS = -L${LIBFT_DIR}/bin -lft -Lmlx -lmlx -lXext -lX11 -lm -lz
+LDFLAGS = -L${LIBFT_DIR}/bin -lft -Lmlx -lmlx_linux -lXext -lX11 -lm -lz
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include -Imlx
 
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
@@ -21,7 +21,9 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/constructor/map_constructor.c \
 	   ${SRC_DIR}/validation/color_validation.c ${SRC_DIR}/del/del_split.c \
 	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validation/board_validator.c \
-	   ${SRC_DIR}/create/create_v_board.c ${SRC_DIR}/create/extract_colors.c
+	   ${SRC_DIR}/create/create_v_board.c ${SRC_DIR}/create/extract_colors.c \
+	   ${SRC_DIR}/del/del_mlx.c ${SRC_DIR}/configure/configure_game.c \
+	   ${SRC_DIR}/run.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

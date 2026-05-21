@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   configure_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 21:09:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/21 19:10:15 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/05/21 19:10:52 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/05/21 19:51:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+static void	init_config(t_mlx *mlx)
 {
-	t_game	*game;
+	mlx->mlx = mlx_init();
+	mlx->window = mlx_new_window(mlx->mlx, 1280, 720, "Cub3d");
+	mlx->img = mlx_new_image(mlx->mlx, 1280, 720);
+}
 
-	if (argc_validation(argc))
+int	configure_game(t_game *game)
+{
+	t_mlx	*mlx;
+
+	mlx = ft_calloc(1, sizeof(t_mlx));
+	if (!mlx)
+	{
+		ft_dprintf(STDERR_FILENO, "Error: unable to alloc t_mlx\n");
 		return (1);
-	game = create_validate_game(argv[1]);
-	if (!game)
-		return (1);
-	if (!configure_game(game))
-		run(game);
-	del_game(game);
+	}
+	init_config(mlx);
+	game->mlx = mlx;
 	return (0);
 }

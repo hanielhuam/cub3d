@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   del_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 21:09:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/21 19:10:15 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/05/21 18:23:03 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/05/21 19:09:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	del_mlx(t_mlx *mlx)
 {
-	t_game	*game;
-
-	if (argc_validation(argc))
-		return (1);
-	game = create_validate_game(argv[1]);
-	if (!game)
-		return (1);
-	if (!configure_game(game))
-		run(game);
-	del_game(game);
-	return (0);
+	mlx_destroy_image(mlx->mlx, mlx->img);
+	mlx_destroy_window(mlx->mlx, mlx->window);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx);
 }
