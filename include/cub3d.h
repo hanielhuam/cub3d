@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/21 20:01:33 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/25 20:57:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "mlx.h"
 
 # define MAP_ELEMENTS "01 NSWE"
+# define WIDITH 1280
+# define HEIGHT 720
 
 typedef enum e_tok_type
 {
@@ -56,11 +58,20 @@ typedef struct s_assets
 	unsigned char	*floor_color;
 }					t_assets;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*adrr;
+	int		bpp;
+	int		lint_lenght;
+	int		endian;
+}			t_img;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*window;
-	void	*img;
+	t_img	*screen;
 }			t_mlx;
 
 typedef struct s_game
@@ -101,6 +112,7 @@ int				floor_color_constructor(t_game *game, char *line);
 int				ceiling_color_constructor(t_game *game, char *line);
 char			**map_constructor(t_list *tokens, int board_lenght);
 int				configure_game(t_game *game);
+int				close_window(t_game *game);
 void			run(t_game *game);
 
 #endif

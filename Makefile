@@ -23,7 +23,7 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validation/board_validator.c \
 	   ${SRC_DIR}/create/create_v_board.c ${SRC_DIR}/create/extract_colors.c \
 	   ${SRC_DIR}/del/del_mlx.c ${SRC_DIR}/configure/configure_game.c \
-	   ${SRC_DIR}/run.c
+	   ${SRC_DIR}/run.c ${SRC_DIR}/configure/handlers.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
