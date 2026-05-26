@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/25 20:57:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:21:11 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ typedef struct s_assets
 typedef struct s_img
 {
 	void	*img;
-	char	*adrr;
+	char	*addr;
 	int		bpp;
-	int		lint_lenght;
+	int		line_lenght;
 	int		endian;
 }			t_img;
 

@@ -18,5 +18,6 @@ void	del_mlx(t_mlx *mlx)
 	free(mlx->screen);
 	mlx_destroy_window(mlx->mlx, mlx->window);
 	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
 	free(mlx);
 }

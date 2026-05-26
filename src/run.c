@@ -14,6 +14,6 @@
 
 void	run(t_game *game)
 {
-		mlx_hook(game->mlx->window, 17, 0, close_window, game);
+	mlx_hook(game->mlx->window, 17, 0, close_window, game);
 	mlx_loop(game->mlx->mlx);
 }
