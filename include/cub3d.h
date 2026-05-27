@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/26 18:21:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/26 20:37:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int				floor_color_constructor(t_game *game, char *line);
 int				ceiling_color_constructor(t_game *game, char *line);
 char			**map_constructor(t_list *tokens, int board_lenght);
 int				configure_game(t_game *game);
+int				configure_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
 

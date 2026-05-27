@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   configure_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 19:55:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/26 20:15:16 by hmacedo-         ###   ########.fr       */
+/*   Created: 2026/05/26 20:38:00 by hmacedo-          #+#    #+#             */
+/*   Updated: 2026/05/26 21:22:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	run(t_game *game)
+int	configure_player(t_game *game)
 {
-	mlx_hook(game->mlx->window, 17, 0, close_window, game);
-	mlx_loop(game->mlx->mlx);
+	
+	return (0);
 }
