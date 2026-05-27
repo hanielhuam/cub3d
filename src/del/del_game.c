@@ -39,5 +39,7 @@ void	del_game(t_game *game)
 		del_split(game->board);
 	if (game->mlx)
 		del_mlx(game->mlx);
+	if (game->player)
+		free(game->player);
 	free(game);
 }

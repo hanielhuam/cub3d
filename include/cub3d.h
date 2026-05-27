@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/26 20:37:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/27 19:23:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,22 @@ typedef struct s_mlx
 	t_img	*screen;
 }			t_mlx;
 
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}				t_plyer;
+
 typedef struct s_game
 {
 	char		**board;
 	t_assets	*assets;
 	t_mlx		*mlx;
+	t_player	*player;
 }			t_game;
 
 int				argc_validation(int argc);
@@ -115,5 +126,6 @@ int				configure_game(t_game *game);
 int				configure_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
+void			calculate_player(t_player *player);
 
 #endif
