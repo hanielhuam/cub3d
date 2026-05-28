@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:56:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2026/05/27 19:23:26 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:47:45 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"
@@ -82,7 +83,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-}				t_plyer;
+}			t_player;
 
 typedef struct s_game
 {
@@ -90,7 +91,7 @@ typedef struct s_game
 	t_assets	*assets;
 	t_mlx		*mlx;
 	t_player	*player;
-}			t_game;
+}				t_game;
 
 int				argc_validation(int argc);
 t_game			*create_validate_game(char *file_nema);
@@ -123,9 +124,8 @@ int				floor_color_constructor(t_game *game, char *line);
 int				ceiling_color_constructor(t_game *game, char *line);
 char			**map_constructor(t_list *tokens, int board_lenght);
 int				configure_game(t_game *game);
-int				configure_player(t_game *game);
+int				config_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
-void			calculate_player(t_player *player);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static int	*config_mlx(t_game *game)
+static int	config_mlx(t_game *game)
 {
 	t_mlx	*mlx;
 	t_img	*screen;
