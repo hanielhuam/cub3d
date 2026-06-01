@@ -29,6 +29,8 @@
 # define MAP_ELEMENTS "01 NSWE"
 # define WIDITH 1280
 # define HEIGHT 720
+# define TOP_SCREEN_HEIGHT 360
+# define MINIMAP_SCALE 8
 
 typedef enum e_tok_type
 {
@@ -127,5 +129,13 @@ int				configure_game(t_game *game);
 int				config_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
+// -------------------raycasting functions-------------------
+int				render_frame(t_game *game);
+void			render_minimap(t_game *game);
+void			clear_screen(t_img *img, int color);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			draw_rect(t_img *img, int *pos, int *size, int color);
+void			draw_wireframe(t_img *img, int *pos, int *size,
+					int color);
 
 #endif

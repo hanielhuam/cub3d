@@ -19,8 +19,8 @@ static int	count_digits(unsigned long int n, int base_lenght)
 	i = 0;
 	if (!n)
 		return (1);
-	if (n < 0)
-		i++;
+	// if (n < 0)
+	// 	i++;
 	while (n && ++i)
 		n /= base_lenght;
 	return (i);
