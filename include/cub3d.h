@@ -87,6 +87,23 @@ typedef struct s_player
 	double	plane_y;
 }			t_player;
 
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+}			t_ray;
+
 typedef struct s_game
 {
 	char		**board;
@@ -129,13 +146,15 @@ int				configure_game(t_game *game);
 int				config_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
-// -------------------raycasting functions-------------------
+// -------------------raycasting functions01-------------------
 int				render_frame(t_game *game);
 void			render_minimap(t_game *game);
 void			clear_screen(t_img *img, int color);
 void			put_pixel(t_img *img, int x, int y, int color);
 void			draw_rect(t_img *img, int *pos, int *size, int color);
-void			draw_wireframe(t_img *img, int *pos, int *size,
-					int color);
-
+void			draw_wireframe(t_img *img, int *pos, int *size, int color);
+// -------------------raycasting functions02-------------------
+void			init_ray(t_ray *ray, t_player *player, int x);
+void			run_dda(t_ray *ray, char **board);
+void			render_raycast(t_game *game);
 #endif

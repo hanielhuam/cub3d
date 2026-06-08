@@ -20,6 +20,7 @@ static void	render_wireframes(t_game *game)
 int	render_frame(t_game *game)
 {
 	clear_screen(game->mlx->screen, 0x101010);
+	render_raycast(game);
 	render_wireframes(game);
 	render_minimap(game);
 	mlx_put_image_to_window(game->mlx->mlx, game->mlx->window,

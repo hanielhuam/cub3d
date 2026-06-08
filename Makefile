@@ -26,7 +26,9 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/run.c ${SRC_DIR}/configure/handlers.c \
 	   ${SRC_DIR}/configure/configure_player.c \
 	   ${SRC_DIR}/render/render_utils.c ${SRC_DIR}/render/render_frame.c \
-	   ${SRC_DIR}/render/render_minimap.c
+	   ${SRC_DIR}/render/render_minimap.c \
+	   ${SRC_DIR}/raycast/init_ray.c ${SRC_DIR}/raycast/dda.c \
+	   ${SRC_DIR}/raycast/render_raycast.c
 
 OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
 
