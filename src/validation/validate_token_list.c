@@ -16,12 +16,14 @@ static int	validate_token_order(t_list *tokens)
 {
 	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
 		tokens = tokens->next;
-	while (tokens && (((t_token *)tokens->content)->type == TK_MAP
-			|| ((t_token *)tokens->content)->type == TK_NL))
+	while (tokens && ((t_token *)tokens->content)->type == TK_MAP)
+		tokens = tokens->next;
+	while (tokens && ((t_token *)tokens->content)->type == TK_NL)
 		tokens = tokens->next;
 	if (!tokens)
 		return (0);
-	ft_dprintf(STDERR_FILENO, "Error: is not allow to have line after map\n");
+	ft_dprintf(STDERR_FILENO,
+		"Error: empty line inside map or content after map\n");
 	return (1);
 }
 

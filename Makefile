@@ -4,9 +4,11 @@ SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
-LDFLAGS = -L${LIBFT_DIR}/bin -lft -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
-INCLUDE = -Iinclude -I${LIBFT_DIR}/include -Imlx
-
+MLX_DIR = mlx
+MLX = ${MLX_DIR}/libmlx_Linux.a
+LDFLAGS = -L${LIBFT_DIR}/bin -lft -L${MLX_DIR} -lmlx_Linux \
+		  -lXext -lX11 -lm -lz
+INCLUDE = -Iinclude -I${LIBFT_DIR}/include -I${MLX_DIR}
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validation/validate_open_file.c \
 	   ${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validation/validate_game.c \
@@ -29,27 +31,23 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/render/render_minimap.c \
 	   ${SRC_DIR}/raycast/init_ray.c ${SRC_DIR}/raycast/dda.c \
 	   ${SRC_DIR}/raycast/render_raycast.c
-
-OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
-
+OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 NAME = cub3D
-
 all: ${NAME}
-
-$(NAME): ${LIBFT} ${OBJS}
+$(NAME): ${LIBFT} ${MLX} ${OBJS}
 	$(CC) ${CFLAGS} ${OBJS} ${LDFLAGS} -o ${NAME}
-
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
-
 ${LIBFT}:
 	make -C ${LIBFT_DIR}
-
+${MLX}:
+	make -C ${MLX_DIR}
 clean:
-	rm -rf ${OBJ_DIR} && make -C ${LIBFT_DIR} clean
-
+	rm -rf ${OBJ_DIR}
+	make -C ${LIBFT_DIR} clean
+	make -C ${MLX_DIR} clean
 fclean: clean
-	rm -rf ${NAME} && rm -rf ${LIBFT}
-
+	rm -rf ${NAME}
+	rm -rf ${LIBFT}
 re: fclean all

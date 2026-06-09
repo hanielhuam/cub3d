@@ -12,6 +12,17 @@
 
 #include "cub3d.h"
 
+static void	remove_line_end(char *line)
+{
+	size_t	len;
+
+	len = ft_strlen(line);
+	if (len && line[len - 1] == '\n')
+		line[--len] = '\0';
+	if (len && line[len - 1] == '\r')
+		line[len - 1] = '\0';
+}
+
 t_token	*create_token_by_line(char *line)
 {
 	t_token	*token;
@@ -23,7 +34,7 @@ t_token	*create_token_by_line(char *line)
 		ft_dprintf(STDERR_FILENO, "Error: Unable to malloc token\n");
 		return (NULL);
 	}
-	line[ft_strlen(line) - 1] = '\0';
+	remove_line_end(line);
 	dup = ft_strdup(line);
 	if (!dup)
 	{
