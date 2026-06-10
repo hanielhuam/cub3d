@@ -42,7 +42,7 @@ static void	init_ray_steps(t_ray *ray, t_player *player)
 /* Initializes one ray using Lode's camera plane formula. */
 void	init_ray(t_ray *ray, t_player *player, int x)
 {
-	ray->camera_x = 2 * x / (double)WIDITH - 1;
+	ray->camera_x = 2 * x / (double)WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;

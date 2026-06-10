@@ -231,3 +231,149 @@ Depois dessas alteracoes:
 3. Desenha os wireframes por cima.
 4. Desenha o minimapa.
 5. Envia a imagem para a janela.
+
+-----------------------------atualizacao 1.0
+
+## `src/raycast/render_raycast.c`
+
+Esse arquivo foi adaptado para usar `t_wall` e o helper genérico de linha
+vertical.
+
+### `wall_color`
+
+```c
+static int	wall_color(t_ray *ray)
+```
+
+O algoritmo de escolha da cor nao foi alterado.
+
+Ele continua diferenciando:
+
+- impacto no eixo Y com passo negativo
+- impacto no eixo Y com passo positivo
+- impacto no eixo X com passo negativo
+- impacto no eixo X com passo positivo
+
+A mudanca e que o valor retornado passa a ser armazenado em:
+
+```c
+wall.color
+```
+
+### Alteracao em `get_wall_line`
+
+Antes:
+
+```c
+static void	get_wall_line(t_ray *ray, int *start, int *end)
+```
+
+Depois:
+
+```c
+static void	get_wall_line(t_ray *ray, t_wall *wall)
+```
+
+Agora a funcao preenche uma estrutura.
+
+Protecao da distancia:
+
+```c
+if (ray->perp_dist <= 0)
+	ray->perp_dist = 0.0001;
+```
+
+Calculo da altura:
+
+```c
+wall->height = (int)(TOP_SCREEN_HEIGHT / ray->perp_dist);
+```
+
+Calculo do inicio:
+
+```c
+wall->draw_start = -wall->height / 2 + TOP_SCREEN_HEIGHT / 2;
+```
+
+Calculo do fim:
+
+```c
+wall->draw_end = wall->height / 2 + TOP_SCREEN_HEIGHT / 2;
+```
+
+Os limites continuam preservando o wireframe:
+
+```c
+if (wall->draw_start < 1)
+	wall->draw_start = 1;
+if (wall->draw_end >= TOP_SCREEN_HEIGHT - 1)
+	wall->draw_end = TOP_SCREEN_HEIGHT - 2;
+```
+
+### Alteracao em `draw_wall_column`
+
+Antes, essa funcao possuia um loop de pixels proprio.
+
+Agora:
+
+```c
+static void	draw_wall_column(t_game *game, t_wall *wall, int x)
+```
+
+Ela cria:
+
+```c
+int	limits[2];
+```
+
+Preenche:
+
+```c
+limits[0] = wall->draw_start;
+limits[1] = wall->draw_end;
+```
+
+E delega o desenho:
+
+```c
+draw_vertical_line(game->mlx->screen, x, limits, wall->color);
+```
+
+Com isso:
+
+- o raycasting calcula dados de parede
+- `render_utils.c` cuida do desenho generico
+
+### Alteracao em `render_raycast`
+
+Antes:
+
+```c
+int	line[2];
+```
+
+Depois:
+
+```c
+t_wall	wall;
+```
+
+O limite horizontal passou de:
+
+```c
+while (x < WIDITH - 1)
+```
+
+para:
+
+```c
+while (x < WIDTH - 1)
+```
+
+Dentro do loop:
+
+1. `init_ray` inicializa o raio.
+2. `run_dda` encontra a parede.
+3. `wall.color = wall_color(&ray)` escolhe a cor.
+4. `get_wall_line(&ray, &wall)` calcula a coluna.
+5. `draw_wall_column(game, &wall, x)` desenha a coluna.

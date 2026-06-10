@@ -8,7 +8,7 @@ static void	render_wireframes(t_game *game)
 
 	pos[0] = 0;
 	pos[1] = 0;
-	size[0] = WIDITH;
+	size[0] = WIDTH;
 	size[1] = TOP_SCREEN_HEIGHT;
 	draw_wireframe(game->mlx->screen, pos, size, 0xe8e8e8);
 	pos[1] = TOP_SCREEN_HEIGHT;

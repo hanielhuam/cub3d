@@ -9,6 +9,7 @@ MLX = ${MLX_DIR}/libmlx_Linux.a
 LDFLAGS = -L${LIBFT_DIR}/bin -lft -L${MLX_DIR} -lmlx_Linux \
 		  -lXext -lX11 -lm -lz
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include -I${MLX_DIR}
+
 SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/del/del_game.c ${SRC_DIR}/validation/validate_open_file.c \
 	   ${SRC_DIR}/create_validate_game.c ${SRC_DIR}/validation/validate_game.c \
@@ -25,29 +26,40 @@ SRCS = ${SRC_DIR}/cub3d.c ${SRC_DIR}/validation/argc_validation.c \
 	   ${SRC_DIR}/utils/check_file.c ${SRC_DIR}/validation/board_validator.c \
 	   ${SRC_DIR}/create/create_v_board.c ${SRC_DIR}/create/extract_colors.c \
 	   ${SRC_DIR}/del/del_mlx.c ${SRC_DIR}/configure/configure_game.c \
-	   ${SRC_DIR}/run.c ${SRC_DIR}/configure/handlers.c \
+	   ${SRC_DIR}/run.c ${SRC_DIR}/input/window_handlers.c \
 	   ${SRC_DIR}/configure/configure_player.c \
 	   ${SRC_DIR}/render/render_utils.c ${SRC_DIR}/render/render_frame.c \
-	   ${SRC_DIR}/render/render_minimap.c \
+	   ${SRC_DIR}/render/render_minimap.c ${SRC_DIR}/render/color_utils.c \
+	   ${SRC_DIR}/input/input_hooks.c \
 	   ${SRC_DIR}/raycast/init_ray.c ${SRC_DIR}/raycast/dda.c \
 	   ${SRC_DIR}/raycast/render_raycast.c
+
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+
 NAME = cub3D
+
 all: ${NAME}
+
 $(NAME): ${LIBFT} ${MLX} ${OBJS}
 	$(CC) ${CFLAGS} ${OBJS} ${LDFLAGS} -o ${NAME}
+
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
+
 ${LIBFT}:
 	make -C ${LIBFT_DIR}
+
 ${MLX}:
 	make -C ${MLX_DIR}
+
 clean:
 	rm -rf ${OBJ_DIR}
 	make -C ${LIBFT_DIR} clean
 	make -C ${MLX_DIR} clean
+
 fclean: clean
 	rm -rf ${NAME}
 	rm -rf ${LIBFT}
+
 re: fclean all

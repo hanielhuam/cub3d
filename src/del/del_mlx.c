@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	del_mlx(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->screen->img);
+	if (!mlx)
+		return ;
+	if (mlx->mlx && mlx->screen && mlx->screen->img)
+		mlx_destroy_image(mlx->mlx, mlx->screen->img);
+	if (mlx->mlx && mlx->window)
+		mlx_destroy_window(mlx->mlx, mlx->window);
+	if (mlx->mlx)
+	{
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
+	}
 	free(mlx->screen);
-	mlx_destroy_window(mlx->mlx, mlx->window);
-	mlx_destroy_display(mlx->mlx);
-	free(mlx->mlx);
 	free(mlx);
 }

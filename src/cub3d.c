@@ -21,8 +21,12 @@ int	main(int argc, char **argv)
 	game = create_validate_game(argv[1]);
 	if (!game)
 		return (1);
-	if (!configure_game(game))
-		run(game);
+	if (configure_game(game))
+	{
+		del_game(game);
+		return (1);
+	}
+	run(game);
 	del_game(game);
 	return (0);
 }

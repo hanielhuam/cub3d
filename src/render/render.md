@@ -196,3 +196,110 @@ Depois dessas alteracoes:
 5. Calcula `offset_y` para centralizar verticalmente na tela de baixo.
 6. Chama `draw_map_tiles` usando esses offsets.
 
+-----------------------------atualizacao 1.0
+
+## `src/render/render_utils.c`
+
+Esse arquivo recebeu duas renomeacoes e um novo helper.
+
+### Alteracao em `put_pixel`
+
+Limite horizontal antes:
+
+```c
+x >= WIDITH
+```
+
+Limite horizontal depois:
+
+```c
+x >= WIDTH
+```
+
+Calculo do endereco antes:
+
+```c
+y * img->line_lenght
+```
+
+Calculo do endereco depois:
+
+```c
+y * img->line_length
+```
+
+Formula completa:
+
+```c
+dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+```
+
+Significado:
+
+- `y * line_length`: avanca ate a linha correta.
+- `x * (bpp / 8)`: avanca ate o pixel correto da linha.
+- `dst`: endereco final do pixel.
+
+### Alteracao em `clear_screen`
+
+Antes:
+
+```c
+while (x < WIDITH)
+```
+
+Depois:
+
+```c
+while (x < WIDTH)
+```
+
+O comportamento continua sendo pintar todos os pixels da janela.
+
+### `draw_vertical_line`
+
+```c
+void	draw_vertical_line(t_img *img, int x, int *limits, int color)
+```
+
+Parametros:
+
+- `img`: imagem de destino.
+- `x`: coluna que sera desenhada.
+- `limits[0]`: inicio vertical.
+- `limits[1]`: fim vertical.
+- `color`: cor da linha.
+
+Embora existam cinco valores logicos, inicio e fim foram agrupados em um vetor.
+Assim a funcao possui quatro parametros e respeita a Norm.
+
+Primeiro copia os limites:
+
+```c
+y = limits[0];
+end = limits[1];
+```
+
+Depois limita o inicio:
+
+```c
+if (y < 0)
+	y = 0;
+```
+
+Limita o fim:
+
+```c
+if (end >= HEIGHT)
+	end = HEIGHT - 1;
+```
+
+Por fim desenha:
+
+```c
+while (y <= end)
+	put_pixel(img, x, y++, color);
+```
+
+`put_pixel` ainda protege o valor de `x`. Portanto, uma coluna horizontalmente
+invalida nao escreve fora da imagem.

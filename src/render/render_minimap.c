@@ -78,7 +78,7 @@ void	render_minimap(t_game *game)
 	width = map_width(game->board) * MINIMAP_SCALE;
 	height = map_height(game->board) * MINIMAP_SCALE;
 	bottom_height = HEIGHT - TOP_SCREEN_HEIGHT;
-	offset_x = (WIDITH - width) / 2;
+	offset_x = (WIDTH - width) / 2;
 	offset_y = TOP_SCREEN_HEIGHT + (bottom_height - height) / 2;
 	draw_map_tiles(game, offset_x, offset_y);
 }

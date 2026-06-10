@@ -5,9 +5,9 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || y < 0 || x >= WIDITH || y >= HEIGHT)
+	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
 		return ;
-	dst = img->addr + (y * img->line_lenght + x * (img->bpp / 8));
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -21,7 +21,7 @@ void	clear_screen(t_img *img, int color)
 	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < WIDITH)
+		while (x < WIDTH)
 			put_pixel(img, x++, y, color);
 		y++;
 	}
@@ -41,6 +41,22 @@ void	draw_rect(t_img *img, int *pos, int *size, int color)
 			put_pixel(img, pos[0] + x++, pos[1] + y, color);
 		y++;
 	}
+}
+
+/* Draws a clipped vertical line in one image column. */
+void	draw_vertical_line(t_img *img, int x, int *limits, int color)
+{
+	int	end;
+	int	y;
+
+	y = limits[0];
+	end = limits[1];
+	if (y < 0)
+		y = 0;
+	if (end >= HEIGHT)
+		end = HEIGHT - 1;
+	while (y <= end)
+		put_pixel(img, x, y++, color);
 }
 
 /* Draws only the border of a rectangle using pos[0..1] and size[0..1]. */

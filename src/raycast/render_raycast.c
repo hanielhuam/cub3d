@@ -13,47 +13,44 @@ static int	wall_color(t_ray *ray)
 }
 
 /* Converts wall distance into a vertical line clipped to the top screen. */
-static void	get_wall_line(t_ray *ray, int *start, int *end)
+static void	get_wall_line(t_ray *ray, t_wall *wall)
 {
-	int	line_height;
-
 	if (ray->perp_dist <= 0)
 		ray->perp_dist = 0.0001;
-	line_height = (int)(TOP_SCREEN_HEIGHT / ray->perp_dist);
-	*start = -line_height / 2 + TOP_SCREEN_HEIGHT / 2;
-	*end = line_height / 2 + TOP_SCREEN_HEIGHT / 2;
-	if (*start < 1)
-		*start = 1;
-	if (*end >= TOP_SCREEN_HEIGHT - 1)
-		*end = TOP_SCREEN_HEIGHT - 2;
+	wall->height = (int)(TOP_SCREEN_HEIGHT / ray->perp_dist);
+	wall->draw_start = -wall->height / 2 + TOP_SCREEN_HEIGHT / 2;
+	wall->draw_end = wall->height / 2 + TOP_SCREEN_HEIGHT / 2;
+	if (wall->draw_start < 1)
+		wall->draw_start = 1;
+	if (wall->draw_end >= TOP_SCREEN_HEIGHT - 1)
+		wall->draw_end = TOP_SCREEN_HEIGHT - 2;
 }
 
 /* Draws one vertical wall slice in the top development screen. */
-static void	draw_wall_column(t_game *game, t_ray *ray, int x, int *line)
+static void	draw_wall_column(t_game *game, t_wall *wall, int x)
 {
-	int	y;
-	int	color;
+	int	limits[2];
 
-	color = wall_color(ray);
-	y = line[0];
-	while (y <= line[1])
-		put_pixel(game->mlx->screen, x, y++, color);
+	limits[0] = wall->draw_start;
+	limits[1] = wall->draw_end;
+	draw_vertical_line(game->mlx->screen, x, limits, wall->color);
 }
 
 /* Casts one ray per screen column and draws untextured wall slices. */
 void	render_raycast(t_game *game)
 {
 	t_ray	ray;
-	int		line[2];
+	t_wall	wall;
 	int		x;
 
 	x = 1;
-	while (x < WIDITH - 1)
+	while (x < WIDTH - 1)
 	{
 		init_ray(&ray, game->player, x);
 		run_dda(&ray, game->board);
-		get_wall_line(&ray, &line[0], &line[1]);
-		draw_wall_column(game, &ray, x, line);
+		wall.color = wall_color(&ray);
+		get_wall_line(&ray, &wall);
+		draw_wall_column(game, &wall, x);
 		x++;
 	}
 }

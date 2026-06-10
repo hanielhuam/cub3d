@@ -27,10 +27,11 @@
 # include "mlx.h"
 
 # define MAP_ELEMENTS "01 NSWE"
-# define WIDITH 1280
+# define WIDTH 1280
 # define HEIGHT 720
 # define TOP_SCREEN_HEIGHT 360
 # define MINIMAP_SCALE 8
+# define KEY_ESC 65307
 
 typedef enum e_tok_type
 {
@@ -51,6 +52,17 @@ typedef struct s_token
 	char		*line;
 }				t_token;
 
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}			t_texture;
+
 typedef struct s_assets
 {
 	char			*no_texture;
@@ -59,6 +71,10 @@ typedef struct s_assets
 	char			*ea_texture;
 	unsigned char	*ceiling_color;
 	unsigned char	*floor_color;
+	t_texture		no;
+	t_texture		so;
+	t_texture		we;
+	t_texture		ea;
 }					t_assets;
 
 typedef struct s_img
@@ -66,7 +82,7 @@ typedef struct s_img
 	void	*img;
 	char	*addr;
 	int		bpp;
-	int		line_lenght;
+	int		line_length;
 	int		endian;
 }			t_img;
 
@@ -103,6 +119,14 @@ typedef struct s_ray
 	int		step_y;
 	int		side;
 }			t_ray;
+
+typedef struct s_wall
+{
+	int	height;
+	int	draw_start;
+	int	draw_end;
+	int	color;
+}		t_wall;
 
 typedef struct s_game
 {
@@ -146,15 +170,20 @@ int				configure_game(t_game *game);
 int				config_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
-// -------------------raycasting functions01-------------------
+// -------------------input functions-------------------
+int				handle_key_press(int keycode, t_game *game);
+void			setup_hooks(t_game *game);
+// -------------------raycasting functions-------------------
 int				render_frame(t_game *game);
 void			render_minimap(t_game *game);
+void			render_raycast(t_game *game);
 void			clear_screen(t_img *img, int color);
 void			put_pixel(t_img *img, int x, int y, int color);
 void			draw_rect(t_img *img, int *pos, int *size, int color);
 void			draw_wireframe(t_img *img, int *pos, int *size, int color);
-// -------------------raycasting functions02-------------------
 void			init_ray(t_ray *ray, t_player *player, int x);
 void			run_dda(t_ray *ray, char **board);
-void			render_raycast(t_game *game);
+int				rgb_to_int(unsigned char *rgb);
+void			draw_vertical_line(t_img *img, int x, int *limits, int color);
+
 #endif
