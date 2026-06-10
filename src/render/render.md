@@ -1,4 +1,4 @@
-# Step 01 - Funcoes de render implementadas
+# Funcoes de render implementadas
 
 ## `render_utils.c`
 
@@ -185,7 +185,9 @@ void	render_minimap(t_game *game)
 
 Centraliza e desenha o minimapa na tela de baixo.
 
-Fluxo:
+## Resultado da etapa
+
+Depois dessas alteracoes:
 
 1. Calcula a largura do mapa em pixels.
 2. Calcula a altura do mapa em pixels.
@@ -194,4 +196,3 @@ Fluxo:
 5. Calcula `offset_y` para centralizar verticalmente na tela de baixo.
 6. Chama `draw_map_tiles` usando esses offsets.
 
-Essa e a funcao publica usada por `render_frame`.

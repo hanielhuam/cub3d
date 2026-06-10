@@ -1,4 +1,4 @@
-# Step 02 - Funcoes do raycasting
+# Funcoes do raycasting
 
 
 ## `init_ray.c`
@@ -222,7 +222,9 @@ render_raycast(game);
 
 Foi adicionada antes dos wireframes e do minimapa.
 
-Ordem atual:
+## Resultado da etapa
+
+Depois dessas alteracoes:
 
 1. Limpa a tela.
 2. Renderiza as paredes 3D sem textura.
