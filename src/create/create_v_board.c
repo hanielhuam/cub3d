@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 static int	*get_dimensions(char **board)
 {
@@ -57,7 +57,7 @@ static char	*get_spaceline(int lenght)
 static char	*fill_v_board_line(char *line, int lenght)
 {
 	int		count;
-	int		line_lenght;
+	int		line_length;
 	char	*result;
 
 	result = ft_calloc(lenght + 1, sizeof(char));
@@ -69,8 +69,8 @@ static char	*fill_v_board_line(char *line, int lenght)
 	count = 0;
 	result[count] = ' ';
 	count++;
-	line_lenght = ft_strlen(line);
-	while (count <= line_lenght)
+	line_length = ft_strlen(line);
+	while (count <= line_length)
 	{
 		result[count] = line[count - 1];
 		count++;

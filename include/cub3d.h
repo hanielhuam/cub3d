@@ -32,6 +32,18 @@
 # define TOP_SCREEN_HEIGHT 360
 # define MINIMAP_SCALE 8
 # define KEY_ESC 65307
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_M 109
+# define MOVE_SPEED 0.06
+# define ROT_SPEED 0.04
+# ifndef DEFAULT_DEBUG_VIEW
+#  define DEFAULT_DEBUG_VIEW 0
+# endif
 
 typedef enum e_tok_type
 {
@@ -122,11 +134,24 @@ typedef struct s_ray
 
 typedef struct s_wall
 {
-	int	height;
-	int	draw_start;
-	int	draw_end;
-	int	color;
+	double	wall_x;
+	double	tex_step;
+	double	tex_pos;
+	int		height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
 }		t_wall;
+
+typedef struct s_input
+{
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
+	int	rotate_left;
+	int	rotate_right;
+}		t_input;
 
 typedef struct s_game
 {
@@ -134,10 +159,12 @@ typedef struct s_game
 	t_assets	*assets;
 	t_mlx		*mlx;
 	t_player	*player;
+	t_input		input;
+	int			debug_view;
 }				t_game;
 
 int				argc_validation(int argc);
-t_game			*create_validate_game(char *file_nema);
+t_game			*create_validate_game(char *file_name);
 int				validate_open_file(char *file_game);
 t_game			*validate_game_file(int fd);
 int				validate_game(t_game *game);
@@ -146,7 +173,8 @@ t_tok_type		compare_token(char *line);
 int				color_validation(char *line);
 int				check_file(char *file);
 int				board_validator(char **board);
-void			del_assets(t_assets *assests);
+void			del_textures(t_game *game);
+void			del_assets(t_assets *assets);
 void			del_game(t_game *game);
 void			del_token(void *token);
 void			del_split(char **split);
@@ -156,7 +184,7 @@ unsigned char	*extract_colors(char *line);
 t_token			*get_resources_tokens(void);
 t_token			*create_token_by_line(char *line);
 t_game			*create_game(t_list *tokens);
-char			**create_v_board(char **board);
+// char			**create_v_board(char **board);
 int				assign_assets(t_game *game, t_list *tokens);
 char			*dup_str(char *str);
 int				no_texture_constructor(t_game *game, char *line);
@@ -165,16 +193,19 @@ int				ea_texture_constructor(t_game *game, char *line);
 int				we_texture_constructor(t_game *game, char *line);
 int				floor_color_constructor(t_game *game, char *line);
 int				ceiling_color_constructor(t_game *game, char *line);
-char			**map_constructor(t_list *tokens, int board_lenght);
+char			**map_constructor(t_list *tokens, int map_length);
+int				config_textures(t_game *game);
 int				configure_game(t_game *game);
 int				config_player(t_game *game);
 int				close_window(t_game *game);
 void			run(t_game *game);
 // -------------------input functions-------------------
 int				handle_key_press(int keycode, t_game *game);
+int				handle_key_release(int keycode, t_game *game);
 void			setup_hooks(t_game *game);
 // -------------------raycasting functions-------------------
 int				render_frame(t_game *game);
+void			render_background(t_game *game);
 void			render_minimap(t_game *game);
 void			render_raycast(t_game *game);
 void			clear_screen(t_img *img, int color);
@@ -185,5 +216,10 @@ void			init_ray(t_ray *ray, t_player *player, int x);
 void			run_dda(t_ray *ray, char **board);
 int				rgb_to_int(unsigned char *rgb);
 void			draw_vertical_line(t_img *img, int x, int *limits, int color);
-
+int				game_loop(t_game *game);
+void			update_player(t_game *game);
+void			rotate_player(t_game *game);
+int				view_height(t_game *game);
+t_texture		*get_wall_texture(t_game *game, t_ray *ray);
+int				texture_pixel(t_texture *texture, int x, int y);
 #endif

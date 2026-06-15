@@ -12,7 +12,6 @@
 
 #include "../include/cub3d.h"
 
-/* Allocates the MLX and screen wrappers before creating native resources. */
 static int	alloc_mlx_data(t_game *game)
 {
 	t_mlx	*mlx;
@@ -22,7 +21,7 @@ static int	alloc_mlx_data(t_game *game)
 	screen = ft_calloc(1, sizeof(t_img));
 	if (!mlx || !screen)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to alloc t_mlx or t_img\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate MLX data\n");
 		free(mlx);
 		free(screen);
 		return (1);
@@ -38,13 +37,13 @@ static int	create_mlx_window(t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: mlx_init failed\n");
+		ft_dprintf(STDERR_FILENO, "Error\nmlx_init failed\n");
 		return (1);
 	}
 	mlx->window = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "Cub3d");
 	if (!mlx->window)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: window creation failed\n");
+		ft_dprintf(STDERR_FILENO, "Error\nwindow creation failed\n");
 		return (1);
 	}
 	return (0);
@@ -59,14 +58,14 @@ static int	create_screen_image(t_mlx *mlx)
 	screen->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	if (!screen->img)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: image creation failed\n");
+		ft_dprintf(STDERR_FILENO, "Error\nimage creation failed\n");
 		return (1);
 	}
 	screen->addr = mlx_get_data_addr(screen->img, &screen->bpp,
 			&screen->line_length, &screen->endian);
 	if (!screen->addr)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: image address failed\n");
+		ft_dprintf(STDERR_FILENO, "Error\nimage address failed\n");
 		return (1);
 	}
 	return (0);
@@ -87,7 +86,8 @@ static int	config_mlx(t_game *game)
 /* Prepares graphics first and the player state after it succeeds. */
 int	configure_game(t_game *game)
 {
-	if (config_mlx(game) || config_player(game))
+	game->debug_view = DEFAULT_DEBUG_VIEW;
+	if (config_mlx(game) || config_textures(game) || config_player(game))
 		return (1);
 	return (0);
 }

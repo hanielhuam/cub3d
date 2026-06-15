@@ -23,7 +23,7 @@ static int	validate_token_order(t_list *tokens)
 	if (!tokens)
 		return (0);
 	ft_dprintf(STDERR_FILENO,
-		"Error: empty line inside map or content after map\n");
+		"Error\nempty line inside map or content after map\n");
 	return (1);
 }
 
@@ -35,18 +35,18 @@ static int	evaluate_count_elements(int element, int count)
 	if (element >= 0 && element <= 5 && count != 1)
 	{
 		ft_dprintf(STDERR_FILENO,
-			"Error: should have only 1 %s in the .cub file\n",
+			"Error\nshould have exactly one %s in the .cub file\n",
 			resources[element].line);
 		return (1);
 	}
 	if (element == 6 && count < 3)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: there is no possible map\n");
+		ft_dprintf(STDERR_FILENO, "Error\nthere is no valid map block\n");
 		return (1);
 	}
 	if (element == 8 && count > 0)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: there is a strange element\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunknown element in file\n");
 		return (1);
 	}
 	return (0);
@@ -60,7 +60,7 @@ static int	*get_evaluate_count(t_list *tokens)
 	elements = ft_calloc(8, sizeof(int));
 	if (!elements)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to alloc elements count\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to count elements\n");
 		return (NULL);
 	}
 	while (tokens)
@@ -68,7 +68,7 @@ static int	*get_evaluate_count(t_list *tokens)
 		temp = (t_token *)tokens->content;
 		if (temp->type == TK_OTHER)
 		{
-			ft_dprintf(STDERR_FILENO, "Error: invalid line\n%s\n", temp->line);
+			ft_dprintf(STDERR_FILENO, "Error\ninvalid line\n%s\n", temp->line);
 			free(elements);
 			return (NULL);
 		}

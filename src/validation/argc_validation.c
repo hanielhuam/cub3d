@@ -16,7 +16,8 @@ int	argc_validation(int argc)
 {
 	if (argc != 2)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: too few arguments\n");
+		ft_dprintf(STDERR_FILENO,
+			"Error\ncub3D expects exactly one .cub file\n");
 		return (1);
 	}
 	return (0);

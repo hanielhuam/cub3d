@@ -12,9 +12,15 @@
 
 #include "cub3d.h"
 
+int	game_loop(t_game *game)
+{
+	update_player(game);
+	return (render_frame(game));
+}
+
 void	run(t_game *game)
 {
 	setup_hooks(game);
-	mlx_loop_hook(game->mlx->mlx, render_frame, game);
+	mlx_loop_hook(game->mlx->mlx, game_loop, game);
 	mlx_loop(game->mlx->mlx);
 }

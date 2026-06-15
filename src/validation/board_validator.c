@@ -34,7 +34,7 @@ static int	check_player(char **board)
 	if (count == 1)
 		return (0);
 	ft_dprintf(STDERR_FILENO,
-		"Error: player appears %d times on the board\n", count);
+		"Error\nplayer appears %d times on the map\n", count);
 	return (1);
 }
 
@@ -85,7 +85,7 @@ int	board_validator(char **board)
 	if (check_closed(board))
 	{
 		ft_dprintf(STDERR_FILENO,
-			"Error: the map isn't totally closed\n");
+			"Error\nthe map is not completely closed\n");
 		return (1);
 	}
 	return (0);

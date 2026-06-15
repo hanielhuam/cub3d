@@ -31,7 +31,7 @@ t_token	*create_token_by_line(char *line)
 	token = ft_calloc(1, sizeof(t_token));
 	if (!token)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: Unable to malloc token\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate token\n");
 		return (NULL);
 	}
 	remove_line_end(line);
@@ -39,7 +39,7 @@ t_token	*create_token_by_line(char *line)
 	if (!dup)
 	{
 		free(token);
-		ft_dprintf(STDERR_FILENO, "Error: Unable to duplicate token string\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to duplicate token\n");
 		return (NULL);
 	}
 	token->line = dup;

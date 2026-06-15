@@ -19,7 +19,7 @@ char	*dup_str(char *str)
 	result = ft_strdup(str);
 	if (!result)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: duplicating string\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to duplicate string\n");
 		return (NULL);
 	}
 	return (result);

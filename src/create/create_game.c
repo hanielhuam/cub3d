@@ -20,13 +20,13 @@ static t_game	*calloc_game(void)
 	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to malloc t_game\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate game\n");
 		return (NULL);
 	}
 	assets = ft_calloc(1, sizeof(t_assets));
 	if (!assets)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to malloc t_assets\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate assets\n");
 		free(game);
 		return (NULL);
 	}

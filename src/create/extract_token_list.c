@@ -23,6 +23,7 @@ static int	add_token2list(t_list **list, char *line)
 	temp = ft_lstnew(token);
 	if (!temp)
 	{
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate token node\n");
 		del_token(token);
 		return (1);
 	}

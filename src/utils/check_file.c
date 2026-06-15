@@ -19,7 +19,7 @@ int	check_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to open %s file\n", file);
+		ft_dprintf(STDERR_FILENO, "Error\nunable to open %s file\n", file);
 		return (1);
 	}
 	close(fd);

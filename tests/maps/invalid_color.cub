@@ -1,0 +1,10 @@
+NO ./resources/north-texture.xpm
+SO ./resources/south-texture.xpm
+WE ./resources/west-texture.xpm
+EA ./resources/east-texture.xpm
+F 220,300,0
+C 225,30,0
+
+111
+1N1
+111

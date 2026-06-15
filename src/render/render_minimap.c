@@ -69,16 +69,21 @@ static void	draw_map_tiles(t_game *game, int offset_x, int offset_y)
 /* Centers and renders the minimap inside the lower development screen. */
 void	render_minimap(t_game *game)
 {
-	int	offset_x;
-	int	offset_y;
-	int	width;
-	int	height;
+	int	offset[2];
+	int	pos[2];
+	int	size[2];
+	int	dimensions[2];
 	int	bottom_height;
 
-	width = map_width(game->board) * MINIMAP_SCALE;
-	height = map_height(game->board) * MINIMAP_SCALE;
+	dimensions[0] = map_width(game->board) * MINIMAP_SCALE;
+	dimensions[1] = map_height(game->board) * MINIMAP_SCALE;
 	bottom_height = HEIGHT - TOP_SCREEN_HEIGHT;
-	offset_x = (WIDTH - width) / 2;
-	offset_y = TOP_SCREEN_HEIGHT + (bottom_height - height) / 2;
-	draw_map_tiles(game, offset_x, offset_y);
+	offset[0] = (WIDTH - dimensions[0]) / 2;
+	offset[1] = TOP_SCREEN_HEIGHT + (bottom_height - dimensions[1]) / 2;
+	draw_map_tiles(game, offset[0], offset[1]);
+	size[0] = MINIMAP_SCALE - 1;
+	size[1] = MINIMAP_SCALE - 1;
+	pos[0] = offset[0] + (int)game->player->pos_x * MINIMAP_SCALE;
+	pos[1] = offset[1] + (int)game->player->pos_y * MINIMAP_SCALE;
+	draw_rect(game->mlx->screen, pos, size, 0xff4040);
 }

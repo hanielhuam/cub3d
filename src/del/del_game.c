@@ -33,6 +33,7 @@ void	del_game(t_game *game)
 {
 	if (!game)
 		return ;
+	del_textures(game);
 	if (game->assets)
 		del_assets(game->assets);
 	if (game->board)

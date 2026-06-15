@@ -21,7 +21,7 @@ static char	**pre_process_color(char *line)
 	split = ft_split(line, ',');
 	if (!split)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to alloc split color\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate color split\n");
 		return (NULL);
 	}
 	count = 0;
@@ -30,7 +30,7 @@ static char	**pre_process_color(char *line)
 		temp = ft_strtrim(split[count], " ");
 		if (!temp)
 		{
-			ft_dprintf(STDERR_FILENO, "Error: unable to trim color\n");
+			ft_dprintf(STDERR_FILENO, "Error\nunable to trim color\n");
 			del_split(split);
 			return (NULL);
 		}
@@ -49,7 +49,7 @@ static int	is_3_colors(char **split)
 		count++;
 	if (count == 3)
 		return (1);
-	ft_dprintf(STDERR_FILENO, "Error: color is composed by 3 elements\n");
+	ft_dprintf(STDERR_FILENO, "Error\ncolor must have three components\n");
 	return (0);
 }
 
@@ -71,7 +71,8 @@ static int	make_color_array(unsigned char *color, char *line)
 		result = ft_atoi(split[count]);
 		if (result < 0 || result > 255)
 		{
-			ft_dprintf(STDERR_FILENO, "Error: color %d out of range\n", result);
+			ft_dprintf(STDERR_FILENO, "Error\ncolor %d is out of range\n",
+				result);
 			del_split(split);
 			return (1);
 		}
@@ -79,6 +80,17 @@ static int	make_color_array(unsigned char *color, char *line)
 	}
 	del_split(split);
 	return (0);
+}
+
+static char	*skip_color_id(char *line)
+{
+	while (*line && ft_isspace(*line))
+		line++;
+	if (*line == 'F' || *line == 'C')
+		line++;
+	while (*line && ft_isspace(*line))
+		line++;
+	return (line);
 }
 
 unsigned char	*extract_colors(char *line)
@@ -90,12 +102,10 @@ unsigned char	*extract_colors(char *line)
 	colors = (unsigned char *)ft_calloc(3, sizeof(char));
 	if (!colors)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: can´t malloc color\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate color\n");
 		return (NULL);
 	}
-	line += 2;
-	while (*line && ft_isspace(*line))
-		line++;
+	line = skip_color_id(line);
 	if (make_color_array(colors, line))
 	{
 		free(colors);

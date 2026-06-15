@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 static char	find_player(double *pos_x, double *pos_y, char **board)
 {
@@ -33,18 +33,16 @@ static char	find_player(double *pos_x, double *pos_y, char **board)
 		}
 		y++;
 	}
-	*pos_y = y + 0.5;
-	*pos_x = x + 0.5;
-	return (board[y][x]);
+	return ('\0');
 }
 
-static void init_plane(t_player *player, double plane_y, double plane_x)
+static void	init_plane(t_player *player, double plane_y, double plane_x)
 {
 	player->plane_y = plane_y;
 	player->plane_x = plane_x;
 }
 
-static void init_dir(t_player *player, double dir_y, double dir_x, char chr)
+static void	init_dir(t_player *player, double dir_y, double dir_x, char chr)
 {
 	player->dir_y = dir_y;
 	player->dir_x = dir_x;
@@ -78,11 +76,18 @@ int	config_player(t_game *game)
 	player = ft_calloc(1, sizeof(t_player));
 	if (!player)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to alloc t_player\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate player\n");
 		return (1);
 	}
 	chr = find_player(&player->pos_x, &player->pos_y, game->board);
+	if (!chr)
+	{
+		free(player);
+		ft_dprintf(STDERR_FILENO, "Error\nplayer not found\n");
+		return (1);
+	}
 	init_player(player, chr);
+	game->board[(int)player->pos_y][(int)player->pos_x] = '0';
 	game->player = player;
 	return (0);
 }

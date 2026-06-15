@@ -12,8 +12,6 @@
 
 #include "cub3d.h"
 
-#include "cub3d.h"
-
 static void	skip_spaces(char *line, int *index)
 {
 	while (line[*index] && ft_isspace(line[*index]))
@@ -62,7 +60,7 @@ int	color_validation(char *line)
 	if (!valid_color_format(line))
 	{
 		ft_dprintf(STDERR_FILENO,
-			"Error: color isn't formatted properly\n");
+			"Error\ncolor is not formatted properly\n");
 		return (1);
 	}
 	return (0);

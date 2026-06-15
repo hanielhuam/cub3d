@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
-char	**map_constructor(t_list *tokens, int map_lenght)
+char	**map_constructor(t_list *tokens, int map_length)
 {
 	char	*temp;
 	int		count;
 	char	**map;
 
-	map = ft_calloc(map_lenght + 1, sizeof(char *));
+	map = ft_calloc(map_length + 1, sizeof(char *));
 	if (!map)
 	{
-		ft_dprintf(STDERR_FILENO, "Error: unable to alloc board map\n");
+		ft_dprintf(STDERR_FILENO, "Error\nunable to allocate map\n");
 		return (NULL);
 	}
 	while (tokens && ((t_token *)tokens->content)->type != TK_MAP)
